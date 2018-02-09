@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1517566293469.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "889580588",
+    "id" : "E211313C",
+    "lastKnownWriteTime" : 1517468494,
+    "last_content_update" : 1517468494,
+    "path" : "~/5.klasse/master/R/sportradar/schedule.R",
+    "project_path" : "schedule.R",
+    "properties" : {
+        "cursorPosition" : "14,5",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

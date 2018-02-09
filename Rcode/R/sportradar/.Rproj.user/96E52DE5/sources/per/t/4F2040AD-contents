@@ -1,0 +1,28 @@
+###################
+#Combination of data for linear regression
+###################
+
+
+training_statistics <- inner_join(data,players_home, by = "Surname")
+
+training_statistics <- match_statistics %>% filter( Team == "EVE")
+
+test_statistics <- data_test %>% filter(Surname %in% players_home$Surname) %>% filter(Team == "EVE")
+
+
+
+
+#Linear model --> biased at the moment
+x <- test_statistics$PointsLastRound
+
+model <- lm(x ~ match_statistics$PointsLastRound + match_statistics$TotalPoints + match_statistics$passes_long_successful)
+
+predictions <- predict(model)
+
+
+
+
+
+
+
+

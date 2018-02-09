@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "###################\n#sportradar import\n###################\n\nlibrary(tidyverse)\nlibrary(httr)\nlibrary(jsonlite)\noptions(stringsAsFactors = FALSE)\n\n#Retrive summary\nurl <- \"https://api.sportradar.us/soccer-xt3/eu/en/matches/\"\nmatch_id <- \"sr:match:11830620\"\nend_key  <- \"/summary.json?api_key=3a97ydredjbxvjghxjbzqz2g\"\n\n#raw_data <- GET(\"https://api.sportradar.us/soccer-xt3/eu/en/matches/sr:match:11830276/summary.json?api_key=3a97ydredjbxvjghxjbzqz2g\")\ncall <- paste0(url,match_id,end_key)\nraw_data <- GET(call)\n\nstats <- raw_data$content %>% rawToChar() %>% fromJSON()\nplayers_home <- stats$statistics$teams$players[[1]]\nplayers_away <- stats$statistics$teams$players[[2]]\n\n\n#Create column Surname\nplayers_home <- players_home %>% \n  mutate(Surname = substr(players_home$name,start = 1,stop = (regexpr(pattern = \",\",text = players_home$name))-1)\n)\n\nplayers_away <- players_away %>% \n  mutate(Surname = name,\n         Surname = substr(players_away$name,start = 1,stop = (regexpr(pattern = \",\",text = players_away$name))-1)\n  )\n\n#Need to hanlde players with \"wrong\" format from overlor\n\nplayers_away$Surname <- case_when(players_away$Surname == \"\" ~ players_away$name,\n                                  TRUE ~ as.character(players_away$Surname))\n\n\n\n",
+    "created" : 1517514503637.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4205570745",
+    "id" : "E6C690D7",
+    "lastKnownWriteTime" : 1517500896,
+    "last_content_update" : 1517500896,
+    "path" : "~/Google Drive/5.KLASSE/Masteroppgave - Vår 2018/Uploads/sportradar/import_sportradar.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
