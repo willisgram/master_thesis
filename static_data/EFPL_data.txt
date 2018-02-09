@@ -1,0 +1,7 @@
+n_clubs : 20
+n_player : 625
+n_keeper : 67
+n_defender : 206
+n_midfielder : 263 
+n_attacker : 89
+
