@@ -12,4 +12,6 @@ player_list 			xlsx		static data 		fil som inneholder indeks til hver spiller. i
 EFPL_data				txt				static data 				fil som innehilder hvor mange players, keepers, defenders, midfielders og attackers i spillet.
 
 
-Output 	
+Output 
+
+	
