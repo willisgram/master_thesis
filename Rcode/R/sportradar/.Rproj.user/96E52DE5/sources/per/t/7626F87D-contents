@@ -1,0 +1,19 @@
+###################
+#Import from Fantasy overlord
+###################
+
+folder <- "input/"
+sheet  <- "FPL17-GW11.csv"
+path   <- paste0(folder,sheet)
+
+data <- read.csv(path)
+
+folder <- "input/"
+sheet  <- "FPL17-GW12.csv"
+path   <- paste0(folder,sheet)
+
+data_test <- read.csv(path)
+
+
+
+

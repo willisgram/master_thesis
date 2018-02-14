@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1517565944114.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3868879308",
+    "id" : "F744B4EB",
+    "lastKnownWriteTime" : 1517566283,
+    "last_content_update" : 1517566283421,
+    "path" : "~/5.klasse/master/R/sportradar/import_sportradar.R",
+    "project_path" : "import_sportradar.R",
+    "properties" : {
+        "cursorPosition" : "24,0",
+        "scrollLine" : "6"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

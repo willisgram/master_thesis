@@ -1,0 +1,17 @@
+#####################
+#Player selection
+#####################
+
+#Import players at start of season
+folder <- "input/"
+year   <- "17"
+week   <- "0"
+sheet  <- paste0("FPL",year,"-GW",week,".csv")
+path   <- paste0(folder,sheet)
+
+
+#Import players after transfer window
+library(xlsx)
+
+players_after <- read.xlsx("output/players.xlsx")
+

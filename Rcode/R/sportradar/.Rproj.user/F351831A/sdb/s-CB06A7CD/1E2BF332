@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "###################\n#sportradar regression\n###################\n\nlibrary(tidyverse)\n\n#Retrive summary\nurl <- \"https://api.sportradar.us/soccer-xt3/eu/en/matches/\"\nmatch_id <- \"sr:match:11830276\"\nend_key  <- \"/summary.json?api_key=3a97ydredjbxvjghxjbzqz2g\"\n\n#raw_data <- GET(\"https://api.sportradar.us/soccer-xt3/eu/en/matches/sr:match:11830276/summary.json?api_key=3a97ydredjbxvjghxjbzqz2g\")\ncall <- paste0(url,match_id,end_key)\nraw_data <- GET(call)\n\nstats <- raw_data$content %>% rawToChar() %>% fromJSON()\nplayers_home <- stats$statistics$teams$players[[1]]\nplayers_away <- stats$statistics$teams$players[[2]]\n\n#Retrive starting line-ups and positions\n\nend_key <- \"/lineups.json?api_key=3a97ydredjbxvjghxjbzqz2g\"\n\ncall <- paste0(url,match_id,end_key)\nraw_data <- GET(call)\n\nlineups <- raw_data$content %>% rawToChar() %>% fromJSON()\n\nlineup_home <- lineups$lineups$starting_lineup[[1]]\nlineup_away <- lineups$lineups$starting_lineup[[2]]\n\n#combine dataframes\n\nmatch_data_home <- inner_join(players_home,lineup_home,by = \"name\")\n\n\n\n\n\n\n\n\n\n",
+    "created" : 1517252167537.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1068325284",
+    "id" : "1E2BF332",
+    "lastKnownWriteTime" : 1517261110,
+    "last_content_update" : 1517261110258,
+    "path" : "~/Google Drive/5.KLASSE/Masteroppgave - Vår 2018/scraping/R/sportradar/game_summary.R",
+    "project_path" : null,
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

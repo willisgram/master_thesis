@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1517323237221.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1256216078",
+    "id" : "7626F87D",
+    "lastKnownWriteTime" : 1517325707,
+    "last_content_update" : 1517325707695,
+    "path" : "~/5.klasse/master/R/sportradar/import_overlord.R",
+    "project_path" : "import_overlord.R",
+    "properties" : {
+        "cursorPosition" : "19,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
