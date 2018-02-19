@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519055606026.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3419977896",
+    "id" : "2F635DC1",
+    "lastKnownWriteTime" : 1519065044,
+    "last_content_update" : -2147483648,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/structure/players_filter_0.R",
+    "project_path" : "structure/players_filter_0.R",
+    "properties" : {
+        "cursorPosition" : "50,0",
+        "scrollLine" : "14"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -2,6 +2,8 @@
 #Complete player list
 ################
 library(tidyverse)
+options(stringsAsFactors = F)
+
 
 #List after transfer window. Assume it to be enough
 folder <- "input/"

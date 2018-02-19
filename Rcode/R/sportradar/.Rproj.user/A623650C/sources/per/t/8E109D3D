@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519056809874.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1211285269",
+    "id" : "8E109D3D",
+    "lastKnownWriteTime" : 1519065043,
+    "last_content_update" : -2147483648,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/regression/regression_0.R",
+    "project_path" : "regression/regression_0.R",
+    "properties" : {
+        "cursorPosition" : "17,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
