@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519142058096.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "46D961E",
+    "lastKnownWriteTime" : 1969450820,
+    "last_content_update" : -2147483648,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "8A44E826",
+        "caption" : "regressors_tot",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=regressors_tot&cache_key=8A44E826",
+        "displayedObservations" : "1002",
+        "environment" : "",
+        "object" : "regressors_tot",
+        "preview" : "0",
+        "totalObservations" : "1002",
+        "variables" : "10"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

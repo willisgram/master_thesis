@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519130785807.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2516636983",
+    "id" : "52C80A37",
+    "lastKnownWriteTime" : 1519141092,
+    "last_content_update" : -2147483648,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/import/import_overlord_loop.R",
+    "project_path" : "import/import_overlord_loop.R",
+    "properties" : {
+        "cursorPosition" : "49,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
