@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519230672945.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "304500723",
+    "id" : "1EBC9C13",
+    "lastKnownWriteTime" : 1519231524,
+    "last_content_update" : 1519231524045,
+    "path" : "//sambaad.stud.ntnu.no/bjornkk/Documents/GitHub/master_thesis/Rcode/R/sportradar/data_16/CleanSheets_16.R",
+    "project_path" : "data_16/CleanSheets_16.R",
+    "properties" : {
+        "cursorPosition" : "37,0",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
