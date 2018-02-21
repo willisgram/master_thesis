@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519231387600.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "52AF35D6",
+    "lastKnownWriteTime" : 1519231479,
+    "last_content_update" : 1519231479247,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/data_16/minutes_played_16.R",
+    "project_path" : "data_16/minutes_played_16.R",
+    "properties" : {
+        "cursorPosition" : "9,16",
+        "scrollLine" : "0",
+        "tempName" : "Untitled2"
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
