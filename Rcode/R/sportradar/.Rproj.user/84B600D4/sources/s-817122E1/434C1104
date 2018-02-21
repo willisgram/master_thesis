@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519221724754.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "434C1104",
+    "lastKnownWriteTime" : 1519221472,
+    "last_content_update" : 1519221472,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/structure/points_16.R",
+    "project_path" : "structure/points_16.R",
+    "properties" : {
+        "cursorPosition" : "37,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

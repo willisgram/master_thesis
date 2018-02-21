@@ -1,0 +1,21 @@
+#################
+#BK average
+################
+
+
+
+points_round <- points_round %>% na.omit()
+
+
+points_round <- points_round %>% mutate(
+  average_5_7 = (round_5 + round_6 + round_7)/3
+)
+
+points_round <- points_round %>% mutate(
+  average_6_8 = (round_6 + round_7 + round_8)/3
+)
+
+
+filter(points_round, round_6 == 6)
+
+runde_5_8 <- select(points_round, round_8, round_7, round_6)
