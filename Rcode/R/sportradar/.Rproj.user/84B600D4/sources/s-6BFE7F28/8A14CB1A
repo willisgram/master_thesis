@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519230230221.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "8A14CB1A",
+    "lastKnownWriteTime" : 1519230420,
+    "last_content_update" : 1519230420345,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/data_16/assist_16.R",
+    "project_path" : "data_16/assist_16.R",
+    "properties" : {
+        "cursorPosition" : "27,69",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
