@@ -15,8 +15,8 @@ path   <- paste0(folder,sheet)
 
 data_0 <- read.csv(path)
 
-for( i in 0:6){
-  year   <- "17"
+for( i in 5:6){
+  year   <- "16"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)

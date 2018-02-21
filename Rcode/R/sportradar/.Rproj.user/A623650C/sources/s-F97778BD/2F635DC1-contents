@@ -3,10 +3,6 @@
 #############################
 
 
-###########################
-#Check how well index matcing works
-###########################
-
 #1
 players_0 <- data_0 %>% mutate(
   Surname_1   = if_else(grepl(Surname,pattern = " "),sub('.* ', '', Surname),Surname),

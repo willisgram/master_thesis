@@ -1,21 +1,21 @@
 {
     "collab_server" : "",
     "contents" : "",
-    "created" : 1519061027192.000,
+    "created" : 1519213237011.000,
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "823704903",
-    "id" : "45C7FF9B",
+    "hash" : "0",
+    "id" : "3FF65513",
     "lastKnownWriteTime" : 1519056678,
     "last_content_update" : 1519056678,
     "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/structure/players_list.R",
     "project_path" : "structure/players_list.R",
     "properties" : {
-        "cursorPosition" : "31,0",
-        "scrollLine" : "28"
+        "cursorPosition" : "27,0",
+        "scrollLine" : "24"
     },
-    "relative_order" : 7,
+    "relative_order" : 2,
     "source_on_save" : false,
     "source_window" : "",
     "type" : "r_source"
