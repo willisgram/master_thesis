@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519229714503.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2853627857",
+    "id" : "FABA2470",
+    "lastKnownWriteTime" : 1519229672,
+    "last_content_update" : 1519229672,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/data_16/cost_16.R",
+    "project_path" : "data_16/cost_16.R",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

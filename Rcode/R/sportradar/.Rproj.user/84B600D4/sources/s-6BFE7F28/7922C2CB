@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519229764615.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "7922C2CB",
+    "lastKnownWriteTime" : 5292976843906638626,
+    "last_content_update" : 1519229764615,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "780A883",
+        "caption" : "team_round",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=team_round&cache_key=780A883",
+        "displayedObservations" : 625,
+        "environment" : "",
+        "object" : "team_round",
+        "preview" : 0,
+        "totalObservations" : 625,
+        "variables" : 5
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}
