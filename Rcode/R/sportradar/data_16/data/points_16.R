@@ -34,7 +34,10 @@ for( i in 5:37){
 }
 
 library(xlsx)
-write.xlsx(points_round, "output/points_16.xlsx")
+
+points_round_out  <- points_round[,names(points_round) != "index"]
+
+write.xlsx(points_round_out, "output/points_16.xlsx")
 
 
 
