@@ -1,16 +1,18 @@
+#1
+
 ###########
 #Import training data
 library(tidyverse)
 options(stringsAsFactors = F)
 folder <- "input/"
-cost_round <- data.frame(index = 1:625)
+points_round <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
-  
+
   
   data_temp   <- read.csv(path)
   
@@ -24,9 +26,18 @@ for( i in 5:37){
   data_temp <- full_join(data_temp,players,by = c("FirstName_1" = "FirstName_1","Surname_1"="Surname_1"))
   data_temp <- data_temp[!is.na(data_temp$index),]
   
-  data_temp <- data_temp %>% select(index,Cost) %>% arrange(index)
+  data_temp <- data_temp %>% select(index,PointsLastRound) %>% arrange(index)
   
-  cost_round <- cbind(cost_round,data_temp$Cost)
-  colnames(cost_round)[i-3] <- paste0("round_",i)
+  points_round <- cbind(points_round,data_temp$PointsLastRound)
+  colnames(points_round)[i-3] <- paste0("round_",i)
   
 }
+
+library(xlsx)
+
+points_round_out  <- points_round[,names(points_round) != "index"]
+
+write.xlsx(points_round_out, "output/points_16.xlsx")
+
+
+
