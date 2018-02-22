@@ -7,7 +7,7 @@ options(stringsAsFactors = F)
 folder <- "input/"
 points_round <- data.frame(index = 1:625)
 
-for( i in 5:8){
+for( i in 5:37){
   year     <- "16"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -34,7 +34,10 @@ for( i in 5:8){
 }
 
 library(xlsx)
-write.xlsx(points_round, "output/points_16.xlsx")
+
+points_round_out  <- points_round[,names(points_round) != "index"]
+
+write.xlsx(points_round_out, "output/points_16.xlsx")
 
 
 

@@ -3,9 +3,9 @@
 library(tidyverse)
 options(stringsAsFactors = F)
 folder <- "input/"
-pos_round <- data.frame(index = 1:625)
+cost_round <- data.frame(index = 1:625)
 
-for( i in 5:8){
+for( i in 5:37){
   year     <- "16"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -24,9 +24,9 @@ for( i in 5:8){
   data_temp <- full_join(data_temp,players,by = c("FirstName_1" = "FirstName_1","Surname_1"="Surname_1"))
   data_temp <- data_temp[!is.na(data_temp$index),]
   
-  data_temp <- data_temp %>% select(index,PositionsList.x) %>% arrange(index)
+  data_temp <- data_temp %>% select(index,Cost) %>% arrange(index)
   
-  pos_round <- cbind(pos_round,data_temp$PositionsList.x)
-  colnames(pos_round)[i-3] <- paste0("round_",i)
+  cost_round <- cbind(cost_round,data_temp$Cost)
+  colnames(cost_round)[i-3] <- paste0("round_",i)
   
 }
