@@ -3,7 +3,8 @@
 ######################
 
 k <- 3
-upper_lim <- 34-(k-1)
+matches <- 27
+upper_lim <- matches-(k-1)
 
 #points
 for (i in seq(from = 2,by = k, to = upper_lim)) {
@@ -26,7 +27,7 @@ for (i in seq(from = 2,by = k, to = upper_lim)) {
 for (i in seq(from = 2,by = k, to = upper_lim)) {
   
   opponent_round_temp <- data.frame(index = 1:625)
-  opponent_round_temp[,2] <- opponent_round[,(i)]
+  opponent_round_temp[,2] <- opponent_round[,(i+(k-1))]
   
   colnames(opponent_round_temp)[2] <- "opponent"
   
@@ -137,8 +138,8 @@ trans_out_round_k <- trans_out_round_k %>% select(trans_out_prev_2,trans_out_pre
 # Create regressors DF
 #################
 
-regressors <- cbind(points_round_k,opponent_round_k,team_round_k,pos_round_k,trans_in_round_k,trans_out_round_k)
-regressors$index <- as.factor(regressors$index)
+regressors_17 <- cbind(points_round_k,opponent_round_k,team_round_k,pos_round_k,trans_in_round_k,trans_out_round_k)
+regressors_17$index <- as.factor(regressors_17$index)
 
 #Needs generalization
 regressors_train <- regressors[1:6250,] %>% na.omit()

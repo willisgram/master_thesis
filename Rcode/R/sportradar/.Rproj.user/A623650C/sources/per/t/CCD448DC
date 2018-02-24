@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1519302518269.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "42|16|66|0|\n71|16|95|0|\n100|16|124|0|\n129|16|153|0|\n158|16|182|0|\n187|16|211|0|\n",
+    "hash" : "3856806244",
+    "id" : "CCD448DC",
+    "lastKnownWriteTime" : 1519482703,
+    "last_content_update" : -2147483648,
+    "path" : "~/GitHub/master_thesis/Rcode/R/sportradar/data_16/data_full_16.R",
+    "project_path" : "data_16/data_full_16.R",
+    "properties" : {
+        "cursorPosition" : "214,0",
+        "scrollLine" : "8",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

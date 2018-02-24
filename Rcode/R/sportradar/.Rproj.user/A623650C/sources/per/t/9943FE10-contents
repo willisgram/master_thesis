@@ -1,5 +1,5 @@
 ######################
-# Full 2016 data import
+# Full 2017 data import
 ######################
 
 #Points
@@ -11,8 +11,8 @@ options(stringsAsFactors = F)
 folder <- "input/"
 points_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 1:27){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -33,15 +33,15 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,PointsLastRound) %>% arrange(index)
   
   points_round <- cbind(points_round,data_temp$PointsLastRound)
-  colnames(points_round)[i-3] <- paste0("round_",i)
+  colnames(points_round)[i+1] <- paste0("round_",i)
   
 }
 
 #Opponents
 opponent_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 0:28){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -62,15 +62,15 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,NextFixture1) %>% arrange(index)
   
   opponent_round <- cbind(opponent_round,data_temp$NextFixture1)
-  colnames(opponent_round)[i-3] <- paste0("round_",i+1)
+  colnames(opponent_round)[i+2] <- paste0("round_",i+1)
   
 }
 
 #Cost
 cost_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 0:28){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -91,15 +91,15 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,Cost) %>% arrange(index)
   
   cost_round <- cbind(cost_round,data_temp$Cost)
-  colnames(cost_round)[i-3] <- paste0("round_",i)
+  colnames(cost_round)[i+2] <- paste0("round_",i+1)
   
 }
 
 #Team
 team_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 0:28){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -120,15 +120,15 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,Team.x) %>% arrange(index)
   
   team_round <- cbind(team_round,data_temp$Team.x)
-  colnames(team_round)[i-3] <- paste0("round_",i)
+  colnames(team_round)[i+1] <- paste0("round_",i)
   
 }
 
 #Position
 pos_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 0:28){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -149,15 +149,15 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,PositionsList.x) %>% arrange(index)
   
   pos_round <- cbind(pos_round,data_temp$PositionsList.x)
-  colnames(pos_round)[i-3] <- paste0("round_",i)
+  colnames(pos_round)[i+2] <- paste0("round_",i+1)
   
 }
 
 #Transfers in
 trans_in_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 1:28){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -178,15 +178,15 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,TransfersInRound) %>% arrange(index)
   
   trans_in_round <- cbind(trans_in_round,data_temp$TransfersInRound)
-  colnames(trans_in_round)[i-3] <- paste0("round_",i)
+  colnames(trans_in_round)[i+1] <- paste0("round_",i)
   
 }
 
 #Transfers out
 trans_out_round <- data.frame(index = 1:625)
 
-for( i in 5:37){
-  year     <- "16"
+for( i in 1:28){
+  year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
   path   <- paste0(folder,sheet)
@@ -207,7 +207,7 @@ for( i in 5:37){
   data_temp <- data_temp %>% select(index,TransfersOutRound) %>% arrange(index)
   
   trans_out_round <- cbind(trans_out_round,data_temp$TransfersOutRound)
-  colnames(trans_out_round)[i-3] <- paste0("round_",i)
+  colnames(trans_out_round)[i+1] <- paste0("round_",i)
   
 }
 
