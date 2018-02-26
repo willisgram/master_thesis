@@ -9,7 +9,7 @@
 library(tidyverse)
 options(stringsAsFactors = F)
 folder <- "input/"
-points_round <- data.frame(index = 1:625)
+points_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -32,13 +32,13 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,PointsLastRound) %>% arrange(index)
   
-  points_round <- cbind(points_round,data_temp$PointsLastRound)
-  colnames(points_round)[i-3] <- paste0("round_",i)
+  points_round_16 <- cbind(points_round_16,data_temp$PointsLastRound)
+  colnames(points_round_16)[i-3] <- paste0("round_",i)
   
 }
 
 #Opponents
-opponent_round <- data.frame(index = 1:625)
+opponent_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -61,13 +61,13 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,NextFixture1) %>% arrange(index)
   
-  opponent_round <- cbind(opponent_round,data_temp$NextFixture1)
-  colnames(opponent_round)[i-3] <- paste0("round_",i+1)
+  opponent_round_16 <- cbind(opponent_round_16,data_temp$NextFixture1)
+  colnames(opponent_round_16)[i-3] <- paste0("round_",i+1)
   
 }
 
 #Cost
-cost_round <- data.frame(index = 1:625)
+cost_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -90,13 +90,13 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,Cost) %>% arrange(index)
   
-  cost_round <- cbind(cost_round,data_temp$Cost)
-  colnames(cost_round)[i-3] <- paste0("round_",i)
+  cost_round_16 <- cbind(cost_round_16,data_temp$Cost)
+  colnames(cost_round_16)[i-3] <- paste0("round_",i)
   
 }
 
 #Team
-team_round <- data.frame(index = 1:625)
+team_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -119,13 +119,13 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,Team.x) %>% arrange(index)
   
-  team_round <- cbind(team_round,data_temp$Team.x)
-  colnames(team_round)[i-3] <- paste0("round_",i)
+  team_round_16 <- cbind(team_round_16,data_temp$Team.x)
+  colnames(team_round_16)[i-3] <- paste0("round_",i)
   
 }
 
 #Position
-pos_round <- data.frame(index = 1:625)
+pos_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -148,13 +148,13 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,PositionsList.x) %>% arrange(index)
   
-  pos_round <- cbind(pos_round,data_temp$PositionsList.x)
-  colnames(pos_round)[i-3] <- paste0("round_",i)
+  pos_round_16 <- cbind(pos_round_16,data_temp$PositionsList.x)
+  colnames(pos_round_16)[i-3] <- paste0("round_",i)
   
 }
 
 #Transfers in
-trans_in_round <- data.frame(index = 1:625)
+trans_in_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -177,13 +177,13 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,TransfersInRound) %>% arrange(index)
   
-  trans_in_round <- cbind(trans_in_round,data_temp$TransfersInRound)
-  colnames(trans_in_round)[i-3] <- paste0("round_",i)
+  trans_in_round_16 <- cbind(trans_in_round_16,data_temp$TransfersInRound)
+  colnames(trans_in_round_16)[i-3] <- paste0("round_",i)
   
 }
 
 #Transfers out
-trans_out_round <- data.frame(index = 1:625)
+trans_out_round_16 <- data.frame(index = 1:625)
 
 for( i in 5:37){
   year     <- "16"
@@ -206,8 +206,8 @@ for( i in 5:37){
   
   data_temp <- data_temp %>% select(index,TransfersOutRound) %>% arrange(index)
   
-  trans_out_round <- cbind(trans_out_round,data_temp$TransfersOutRound)
-  colnames(trans_out_round)[i-3] <- paste0("round_",i)
+  trans_out_round_16 <- cbind(trans_out_round_16,data_temp$TransfersOutRound)
+  colnames(trans_out_round_16)[i-3] <- paste0("round_",i)
   
 }
 

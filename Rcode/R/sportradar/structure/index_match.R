@@ -15,6 +15,22 @@ players_selected <- data.frame(index = team)
 team_0 <- inner_join(players,players_selected,by = "index")
 
 
+########################
+# From forecast
+#######################
+
+compare <- compare %>% mutate(
+  index = as.integer(index)
+)
+
+compare <- compare %>% arrange(desc(predictions))
+
+players_selected <- head(compare,n = 20)
+
+
+
+team_0 <- inner_join(players,players_selected,by = "index")
+
 
 
 
