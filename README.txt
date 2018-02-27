@@ -19,3 +19,6 @@ Filnavn 										Type		Mappe 																						Forklaring
 		
 NAVN PÅ FORECASTING METODE + _output_GW + "X" 	txt			master_thesis\input\dynamic_data\forecasting_method\ + NAVN PÅ FORECASTING METODE + \		Fil som inneholder output fra en kjøring i Mosel, hvor X = hvilken gameweek gjeldende ergo 0, 1, 2, ... 37
 
+
+Notes: 
+- N/A = -10000 forecasted point. 
