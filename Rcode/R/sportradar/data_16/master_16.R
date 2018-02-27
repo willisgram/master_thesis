@@ -11,8 +11,9 @@ library(xlsx)
 
 #given input
 k <- 3
+h <- 5
 
-for(week_for in 15:18){
+for(week_for in 15:25){
   
   # Distribute points from k matches
   ######################
@@ -200,6 +201,10 @@ for(week_for in 15:18){
         index_int = as.integer(index)
       ) %>% select(index_int)
       
+      cost_table <- regressors_test_data_16_k %>% mutate(
+        index_int = as.integer(index)
+      ) %>% select(index_int,cost)
+      
       predictions_table <- cbind(predictions_table,predictions)
       colnames(predictions_table)[j+1] <- name
       
@@ -234,11 +239,18 @@ for(week_for in 15:18){
   # Stucture back to standard format and write xlsx
   ###############
   
-  # Create NAs
+  # Create NAs for predictions
   names(predictions_table)[names(predictions_table) == "index_int"] <- "index"
   index_temp <- data.frame(index = 1:625)
   predictions_table <- full_join(predictions_table, index_temp, by = "index") %>% arrange(index)
   predictions_table[is.na(predictions_table)] <- -10000
+  
+  # Create NAs for cost
+  names(cost_table)[names(cost_table) == "index_int"] <- "index"
+  index_temp <- data.frame(index = 1:625)
+  cost_table <- full_join(cost_table, index_temp, by = "index") %>% arrange(index)
+  cost_table[is.na(predictions_table)] <- -10000
+  cost_table[,3:5] <- cost_table[,2]
   
   # Assign name
   name <- paste0("forecast_point_gw", as.character(week_for),".xlsx")
