@@ -13,8 +13,12 @@ regressors_16$index <- as.factor(regressors_16$index)
 #regressors_test_data_16  <- regressors_test_data_16 %>% filter(index %in% regressors_train_16$index)
 #regressors_test_16  <- regressors_test_data_16[,names(regressors_test_data_16) != "realized"]
 
+
+#####
+# Dont trust 
+#####
 #Generalization:
-#Forecast week 6
+#Forecast week 9
 k <- 3 #given input
 n <- 2 #counting variable
 z <- 1 #counting variable
