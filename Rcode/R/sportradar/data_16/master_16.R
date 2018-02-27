@@ -12,7 +12,7 @@ library(xlsx)
 #given input
 k <- 3
 
-for(week_for in 15:20){
+for(week_for in 15:18){
   
   # Distribute points from k matches
   ######################
@@ -238,6 +238,7 @@ for(week_for in 15:20){
   names(predictions_table)[names(predictions_table) == "index_int"] <- "index"
   index_temp <- data.frame(index = 1:625)
   predictions_table <- full_join(predictions_table, index_temp, by = "index") %>% arrange(index)
+  predictions_table[is.na(predictions_table)] <- -10000
   
   # Assign name
   name <- paste0("forecast_point_gw", as.character(week_for),".xlsx")
@@ -249,6 +250,5 @@ for(week_for in 15:20){
   # Write xlsx file
   rownames(predictions_table) <- NULL
   write.xlsx(predictions_table, file,row.names = F)
-  write.xlsx(name, "output/players_static_club.xlsx")
   #################
 }
