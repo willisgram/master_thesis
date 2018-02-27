@@ -1,54 +1,54 @@
-Total expected points: 285.128
+Total expected points: 186.491
 Selected-----------------------------------------------------------------
-22
-41
-148
-149
-152
-191
-250
+18
+58
+96
+106
+167
+267
+271
 335
-450
-490
-498
-523
-572
-573
-605
+338
+344
+449
+495
+584
+592
+606
 Starting-----------------------------------------------------------------
-22
-148
-149
-152
-191
-250
+18
+96
+106
+167
+267
 335
-450
-490
-573
-605
+344
+449
+584
+592
+606
 Substitutes-----------------------------------------------------------------
-GAMEWEEK 2,PRIORITY 1:498
-GAMEWEEK 2,PRIORITY 2:523
-GAMEWEEK 2,PRIORITY 3:572
-GAMEWEEK 3,PRIORITY 1:335
-GAMEWEEK 3,PRIORITY 2:149
-GAMEWEEK 3,PRIORITY 3:191
-GAMEWEEK 4,PRIORITY 1:250
-GAMEWEEK 4,PRIORITY 2:605
-GAMEWEEK 4,PRIORITY 3:498
+GAMEWEEK 2,PRIORITY 1:338
+GAMEWEEK 2,PRIORITY 2:271
+GAMEWEEK 2,PRIORITY 3:495
+GAMEWEEK 3,PRIORITY 1:338
+GAMEWEEK 3,PRIORITY 2:495
+GAMEWEEK 3,PRIORITY 3:271
+GAMEWEEK 4,PRIORITY 1:338
+GAMEWEEK 4,PRIORITY 2:495
+GAMEWEEK 4,PRIORITY 3:271
 Captain-----------------------------------------------------------------
-148
+344
 Vice-Captain-----------------------------------------------------------------
-152
+584
 Remaining budget-----------------------------------------------------------------
-PREVIOUS GW: 2.38e+07
-THIS GW: 2.37e+07
+PREVIOUS GW: 2.3e+06
+THIS GW: 6.1e+06
 Sold-----------------------------------------------------------------
-146
+489
 player selected, 403: 0
 Bought-----------------------------------------------------------------
-152
+344
 Number of illegal transfers--------------------------------------------------------------
 0
 -----------------------------------------------------------------
