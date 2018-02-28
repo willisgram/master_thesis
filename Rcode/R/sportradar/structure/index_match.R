@@ -20,6 +20,8 @@ players_selected <- data.frame(index = team)
 
 team_0 <- inner_join(points_round_16,players_selected,by = "index")
 
+team <- c(58,96,106,271,338,352,449,489,495,561,583)
+
 
 ########################
 # From forecast
