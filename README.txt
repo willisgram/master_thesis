@@ -22,3 +22,4 @@ NAVN PÅ FORECASTING METODE + _output_GW + "X" 	txt			master_thesis\input\dynami
 
 Notes: 
 - N/A = -10000 forecasted point. 
+- N/A = 100 000 000 cost. 
