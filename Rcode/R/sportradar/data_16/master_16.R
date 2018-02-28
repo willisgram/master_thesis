@@ -173,7 +173,7 @@ for(week_for in 15:25){
   
   #Forecasts begins in week 6
   
-  for (j in 1:5) {
+  for (j in 1:h) {
     
     
     
@@ -207,6 +207,7 @@ for(week_for in 15:25){
       
       predictions_table <- cbind(predictions_table,predictions)
       colnames(predictions_table)[j+1] <- name
+      colnames(cost_table)[j+1] <- name
       
     } else{
       
@@ -249,15 +250,25 @@ for(week_for in 15:25){
   names(cost_table)[names(cost_table) == "index_int"] <- "index"
   index_temp <- data.frame(index = 1:625)
   cost_table <- full_join(cost_table, index_temp, by = "index") %>% arrange(index)
-  cost_table[is.na(predictions_table)] <- -10000
-  cost_table[,3:5] <- cost_table[,2]
+  cost_table[is.na(cost_table)] <- 100000000
+  cost_table[,3:(h+1)] <- cost_table[,2]
+  colnames(cost_table)[3:(h+1)] <- paste0("gw_",(week_for+1):(week_for+h-1))
   
   # Assign name
-  name <- paste0("forecast_point_gw", as.character(week_for),".xlsx")
-  path <- '../../../input/dynamic_data/forecasting_method/regression/'
-  file <- paste0(path, name)
+  #Forecasts
+  name_for <- paste0("forecast_point_gw", as.character(week_for),".xlsx")
+  path_for <- '../../../input/dynamic_data/forecasting_method/regression/'
+  file_for <- paste0(path, name)
   
-  assign(x = name,value = predictions_table)
+  assign(x = name_for,value = predictions_table)
+  
+  #Costs
+  name_cost <- paste0("player_cost_gw", as.character(week_for),".xlsx")
+  path_for <- '../../../input/dynamic_data/cst/regression/'
+  file_for <- paste0(path, name)
+  
+  assign(x = name_for,value = predictions_table)
+  
   
   # Write xlsx file
   rownames(predictions_table) <- NULL
