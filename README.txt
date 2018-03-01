@@ -16,9 +16,28 @@ EFPL_data					txt			master_thesis\input\static_data\ 																fil som inn
 Output 
 
 Filnavn 										Type		Mappe 																						Forklaring
-		
-NAVN PÅ FORECASTING METODE + _output_GW + "X" 	txt			master_thesis\input\dynamic_data\forecasting_method\ + NAVN PÅ FORECASTING METODE + \		Fil som inneholder output fra en kjøring i Mosel, hvor X = hvilken gameweek gjeldende ergo 0, 1, 2, ... 37
+	
+GW1-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+NAVN PÅ FORECASTING METODE + _output_GW + "X" 	txt			master_thesis\input\dynamic_data\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\		Fil som inneholder output fra en kjøring i Mosel, hvor X = hvilken gameweek gjeldende ergo 0, 1, 2, ... 37
+selected										csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\
+starting  										csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\
+captain											csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\
+vice_captain									csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\
+substitutes										csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\
+remaining budget 								csv 		master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW1\				
 
+GW "X" -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+selected										csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \
+starting  										csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \
+captain											csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \
+vice_captain									csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \
+substitutes										csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \
+remaining budget 								csv 		master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \	
+
+++
+sold 											csv 		master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \	
+bought											csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \	
+number_illegal_transfers						csv			master_thesis\output\forecasting_method\ + NAVN PÅ FORECASTING METODE + \GW +  "X" + \	
 
 Notes: 
 - N/A = -10000 forecasted point. 
