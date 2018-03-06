@@ -41,6 +41,7 @@ for(week_for in 5:37){
   predictions_table_average <- points_average_a_16 %>% select(index,week_for+1)
   predictions_table_average[,3:(h+1)] <- predictions_table_average[,2]
   colnames(predictions_table_average)[2:(h+1)] <- paste0("round_",(week_for):(week_for+h-1))
+  predictions_table_average[is.na(predictions_table_average)] <- -10000
   
   # Assign name
   #Forecasts
@@ -48,7 +49,7 @@ for(week_for in 5:37){
   path_for_avg <- '../../../input/dynamic_data/forecasting_method/average/'
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
-  #assign(x = name_for,value = predictions_table)
+  #assign(x = name_for,value = predictions_table_average)
   
   # Write xlsx file
   rownames(predictions_table_average) <- NULL

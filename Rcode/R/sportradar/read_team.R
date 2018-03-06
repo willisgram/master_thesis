@@ -1,11 +1,8 @@
 ########################
-# Read txt from Mosel
+# Read csv from Mosel
 #########################
 
 
-
-
-library(readr)
 options(stringsAsFactors = F)
 
 total_points <- 0
@@ -53,15 +50,6 @@ for (i in 1:10) {
   file_vice <- paste0(path,method,folder,"vice_captain.csv")
   vice_captain <- read.csv(file_vice,header = F)
   
-  
-  #name_selected <- paste0("selected_",as.character(i+4))
-  #players_starting <- starting %>% mutate(index = as.integer(starting)) %>% select(index)
-  #team <- inner_join(points_round_16,players_starting,by = "index")
-  
-  
-  
-  #assign(name_starting,team)
-  #assign(name_selected,selected)
   
 }
 

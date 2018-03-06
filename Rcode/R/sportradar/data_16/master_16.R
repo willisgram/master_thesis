@@ -14,7 +14,7 @@ k <- 3
 h <- 5
 # week_for <- 15
 
-for(week_for in 15:25){
+for(week_for in 15:15){
   
   # Distribute points from k matches
   ######################
@@ -204,7 +204,7 @@ for(week_for in 15:25){
 
       predictions_table <- cbind(predictions_table,predictions)
       colnames(predictions_table)[j+1] <- name
-      colnames(cost_table)[j+1] <- name
+      
       
     } else{
       
@@ -245,14 +245,14 @@ for(week_for in 15:25){
   
   # Assign name
   #Forecasts
-  name_for <- paste0("forecast_point_gw", as.character(week_for),".xlsx")
+  name_for <- paste0("forecast_point_GW", as.character(week_for-14),".xlsx")
   path_for <- '../../../input/dynamic_data/forecasting_method/regression/'
-  file_for <- paste0(path, name)
+  file_for <- paste0(path_for, name_for)
   
   assign(x = name_for,value = predictions_table)
   
   # Write xlsx file
   rownames(predictions_table) <- NULL
-  write.xlsx(predictions_table, file,row.names = F)
+  write.xlsx(predictions_table, file_for,row.names = F)
   #################
 }

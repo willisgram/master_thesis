@@ -211,4 +211,54 @@ for( i in 5:37){
   
 }
 
+# Total minutes played
+tot_min_round_16 <- data.frame(index = 1:625)
+
+for( i in 5:37){
+  year     <- "16"
+  week   <- as.character(i)
+  sheet  <- paste0("FPL",year,"-GW",week,".csv")
+  path   <- paste0(folder,sheet)
+  
+  
+  data_temp   <- read.csv(path)
+  
+  
+  data_temp <- data_temp %>% mutate(
+    Surname_1   = if_else(grepl(Surname,pattern = " "),sub('.* ', '', Surname),Surname),
+    FirstName_1 = if_else(grepl(Surname,pattern = " "),sub(' .*', '',Surname ), FirstName)
+  )
+  
+  
+  data_temp <- full_join(data_temp,players,by = c("FirstName_1" = "FirstName_1","Surname_1"="Surname_1"))
+  data_temp <- data_temp[!is.na(data_temp$index),]
+  
+  data_temp <- data_temp %>% select(index,MinutesPlayed) %>% arrange(index)
+  
+  tot_min_round_16 <- cbind(tot_min_round_16,data_temp$MinutesPlayed)
+  colnames(tot_min_round_16)[i-3] <- paste0("round_",i)
+  
+}
+
+#Minutes played, 90 > indicates double round
+
+minutes_round_16 <- data.frame(index = 1:625)
+
+for (i in 5:37) {
+  
+  if(i == 5){
+    
+    minutes_round_16[,i-3] <- tot_min_round_16[,i-3]
+    
+  } else{
+  
+    minutes_round_16[,i-3] <- if_else(condition = is.na(tot_min_round_16[,i-4])&!is.na(tot_min_round_16[,i-3]),
+            true = tot_min_round_16[,i-3],
+            false = tot_min_round_16[,i-3]-tot_min_round_16[,i-4])
+    
+  #minutes_round_16[,i-3] <- tot_min_round_16[i-3]-tot_min_round_16[i-4]
+  
+  }
+}
+
 rm(list = c("data_26","data_temp"))
