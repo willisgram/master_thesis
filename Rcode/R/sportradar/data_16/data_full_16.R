@@ -256,9 +256,10 @@ for (i in 5:37) {
             true = tot_min_round_16[,i-3],
             false = tot_min_round_16[,i-3]-tot_min_round_16[,i-4])
     
-  #minutes_round_16[,i-3] <- tot_min_round_16[i-3]-tot_min_round_16[i-4]
-  
+
   }
+  
+  colnames(minutes_round_16)[i-3] <- paste0("round_",i)
 }
 
 rm(list = c("data_26","data_temp"))
