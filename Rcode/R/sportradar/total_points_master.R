@@ -2,14 +2,19 @@
 # Caculcate points for all rounds
 #########################
 
-total_points_round <- data.frame(round = 8:15,points = rep(0,8))
+round_start <- 15 #tot_points[i] must change if editing
+round_stop  <- 25
 
-for (i in 4:11) {
+total_points_round <- data.frame(round = round_start:round_stop,
+                                 points = rep(0,round_stop-round_start+1),
+                                 points_brutto = rep(0,round_stop-round_start+1))
+
+for (i in 1:11) {
   
   path <- "../../../output/forecasting_method/"
   method <- "regression/"
   folder <- paste0("GW",i,"/")
-  round  <- i+4
+  round  <- i+14
   
   #Captain
   file_cap <- paste0(path,method,folder,"captain.csv")
@@ -43,17 +48,22 @@ for (i in 4:11) {
   
   final_team_round <- final_team(round = round,selected = selected_round,starting = starting_round,
                           substitutes = substitutes_round,minutes_round = minutes_round_16)
-  if(i == 4){
+  if(i == 1){
     ill_trans_round <- 0
   } else{
-    ill_trans_round  <- max(0,10 - dim(inner_join(final_team_round,final_team_prev,'index'))[1])
+    ill_trans_round  <- max(0,14 - dim(inner_join(selected_round,selected_prev,'index'))[1])
   }
   
-  total_points_round$points[i-3]  <- total_points(round = round,final_team = final_team_round,
+  total_points_round$points[i]  <- total_points(round = round,final_team = final_team_round,
                                       captain = captain_round,
                                       vice_captain = vice_captain_round,ill_trans = ill_trans_round,
                                       points_round = points_round_16,minutes_round = minutes_round_16)
+  
+  total_points_round$points_brutto[i]  <- total_points(round = round,final_team = final_team_round,
+                                                captain = captain_round,
+                                                vice_captain = vice_captain_round,ill_trans = 0,
+                                                points_round = points_round_16,minutes_round = minutes_round_16)
  
-  final_team_prev <- final_team_round 
+  selected_prev <- selected_round
   
 }
