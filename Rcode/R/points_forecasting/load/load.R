@@ -23,3 +23,4 @@ opponent_round_16 <- read.csv(file = "data_16/data_16_output/opponent_round_16.c
 #Completed w/ dummies
 trans_in_round_16 <- read.csv(file = "data_16/data_16_output/trans_in_round_16.csv")
 trans_out_round_16 <- read.csv(file = "data_16/data_16_output/trans_out_round_16.csv")
+minutes_round_16 <- read.csv(file = "data_16/data_16_output/minutes_round_16.csv")

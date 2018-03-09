@@ -7,6 +7,7 @@
 ###########
 #Import training data
 library(tidyverse)
+library(xlsx)
 options(stringsAsFactors = F)
 folder <- "input/"
 points_round_16 <- data.frame(index = 1:625)
@@ -129,7 +130,30 @@ cost_round_16 <- cost_round_16 %>% mutate(
   round_38 = round_37
 )
 
+cost_round_16_1_4 <- cost_round_16 %>% mutate(
+  round_1 = round_5,
+  round_2 = round_5,
+  round_3 = round_5,
+  round_4 = round_5
+) %>% select(round_1,round_2,round_3,round_4)
+
+cost_round_16 <- cbind(cost_round_16_1_4,cost_round_16)
+
+cost_round_16 <- cost_round_16[,-5]
+index = data.frame( index = 1:625)
+cost_round_16 <- cbind(index,cost_round_16)
+
 write.csv(x = cost_round_16,file = "data_16/data_16_output/cost_round_16.csv",row.names = F)
+
+# Structure and write xlsx
+cost_round_16[is.na(cost_round_16)] <- 100000000
+name_for <- paste0("player_cost.xlsx")
+path_for <- '../../../input/static_data/cost/'
+file_for <- paste0(path_for, name_for)
+
+# Write xlsx file
+rownames(cost_round_16) <- NULL
+write.xlsx(cost_round_16, file_for,row.names = F)
 
 #Team
 team_round_16 <- data.frame(index = 1:625)
@@ -387,5 +411,33 @@ for (i in 5:37) {
   
   colnames(minutes_round_16)[i-3] <- paste0("round_",i)
 }
+
+minutes_round_16_1_4 <- minutes_round_16 %>% mutate(
+  round_temp = round_5,
+  round_5 = round(round_temp/5),
+  round_4 = round((round_temp-round_5)/4),
+  round_3 = round((round_temp-round_5-round_4)/3),
+  round_2 = round((round_temp-round_5-round_4-round_3)/2),
+  round_1 = round((round_temp-round_5-round_4-round_3-round_2)/1)
+) %>% select(round_1,round_2,round_3,round_4,round_5)
+
+minutes_round_16 <- subset(minutes_round_16,select = -round_5)
+minutes_round_16 <- cbind(minutes_round_16_1_4,minutes_round_16)
+
+minutes_round_16_38 <- minutes_round_16 %>% mutate(
+  round_temp = round_37,
+  round_37 = round(round_temp/2),
+  round_38 = round_temp-round_37
+) %>% select(round_37,round_38)
+
+minutes_round_16 <- subset(minutes_round_16,select = -round_37)
+minutes_round_16 <- cbind(minutes_round_16,minutes_round_16_38)
+
+minutes_round_16 <- minutes_round_16[,-6]
+index = data.frame( index = 1:625)
+minutes_round_16 <- cbind(index,minutes_round_16)
+
+write.csv(x = minutes_round_16,file = "data_16/data_16_output/minutes_round_16.csv",row.names = F)
+
 
 rm(list = c("data_temp","folder","sheet","week","year","path","i"))
