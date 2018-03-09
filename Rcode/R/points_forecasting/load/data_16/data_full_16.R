@@ -95,6 +95,20 @@ for( i in 5:37){
   
 }
 
+opponent_round_16_1_4 <- opponent_round_16 %>% mutate(
+  round_5 = round_23,
+  round_4 = round_22,
+  round_3 = round_21,
+  round_2 = round_20,
+  round_1 = round_19
+) %>% select(round_1,round_2,round_3,round_4,round_5)
+
+opponent_round_16 <- cbind(opponent_round_16_1_4,opponent_round_16)
+
+opponent_round_16 <- opponent_round_16[,-6]
+index = data.frame( index = 1:625)
+opponent_round_16 <- cbind(index,opponent_round_16)
+
 write.csv(x = opponent_round_16,file = "data_16/data_16_output/opponent_round_16.csv",row.names = F)
 
 #Cost
@@ -359,7 +373,7 @@ trans_out_round_16 <- trans_out_round_16[,-5]
 index = data.frame( index = 1:625)
 trans_out_round_16 <- cbind(index,trans_out_round_16)
 
-write.csv(x = trans_out_round_16,file = "data_16/data_16_output/trans_out_round_16.csv",row.names = F)
+write.csv(x = trans_out_round_16,file = "load/data_16/data_16_output/trans_out_round_16.csv",row.names = F)
 
 # Total minutes played
 tot_min_round_16 <- data.frame(index = 1:625)

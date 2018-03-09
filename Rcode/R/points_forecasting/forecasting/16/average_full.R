@@ -9,22 +9,22 @@
 a <- 3
 points_average_a_16 <- data.frame(index = 1:625)
 
-points_average_a_16[,2:5] <- NA
+#points_average_a_16[,2:5] <- NA
 
-for(i in 5:37){
+for(i in 1:38){
   
-  if(i <= a+4){
+  if(i <= a){
   
   points_average_a_16[,i+1] <- NA
       
   } else{
     
-    points_average_a_16[,i+1] <- rowMeans(points_round_16[,((i-3)-a):(i-4)])
+    points_average_a_16[,i+1] <- rowMeans(points_round_16[,((i+1)-a):(i)])
     
   }    
   
 }
-colnames(points_average_a_16)[2:38] <- paste0("round_",1:37)
+colnames(points_average_a_16)[2:39] <- paste0("round_",1:38)
 
 ############
 
@@ -34,7 +34,7 @@ colnames(points_average_a_16)[2:38] <- paste0("round_",1:37)
 ##################
 library(xlsx) #does not work on mac per now
 
-s <- 5+a #first prediction with data
+s <- 1+a #first prediction with data
 h<-10
 
 for(week_for in s:37){
@@ -46,7 +46,7 @@ for(week_for in s:37){
   
   # Assign name
   #Forecasts
-  name_for_avg <- paste0("forecast_point_GW", as.character(week_for-s+1),".xlsx")
+  name_for_avg <- paste0("forecast_point_GW", as.character(week_for-s+1),".xlsx") #Due to optimization syntax
   path_for_avg <- '../../../input/dynamic_data/forecasting_method/average/'
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
