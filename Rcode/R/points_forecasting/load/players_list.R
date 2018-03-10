@@ -26,7 +26,7 @@ players <- players %>% arrange(match(PositionsList, c("GLK","DEF","MID","FWD")),
 
 rm(list = c("data_26","folder","sheet","week","year","path"))
 
-write.csv(x = players,file = "data_16/data_16_output/players.csv",row.names = F)
+write.csv(x = players,file = "load/data_16/data_16_output/players.csv",row.names = F)
 
 
 library(xlsx)

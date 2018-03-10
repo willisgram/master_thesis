@@ -8,7 +8,7 @@ players <- read.csv(file = "load/data_all/players.csv")
 
 
 ###################
-# Regressors
+# Regressors 2016
 ###################
 
 #Completed round data
@@ -30,5 +30,31 @@ opponent_round_16 <- read.csv(file = "load/data_16/data_16_output/opponent_round
 #Cost: 1-4 and 38 #Almost possible to fix
 #Minutes 1-4 and 38 (weird at 37) #Possible to fix
 #Opponent 1-5 #Possible to fix
+
+###################
+# Regressors 2017
+###################
+
+#Completed round data
+#1-27
+team_round_17 <- read.csv(file = "load/data_17/data_17_output/team_round_17.csv")
+pos_round_17 <- read.csv(file = "load/data_17/data_17_output/pos_round_17.csv")
+trans_in_round_17 <- read.csv(file = "load/data_17/data_17_output/trans_in_round_17.csv")
+trans_out_round_17 <- read.csv(file = "load/data_17/data_17_output/trans_out_round_17.csv")
+minutes_round_17 <- read.csv(file = "load/data_17/data_17_output/minutes_round_17.csv")
+cost_round_17 <- read.csv(file = "load/data_17/data_17_output/cost_round_17.csv")
+points_round_17 <- read.csv(file = "load/data_17/data_17_output/points_round_17.csv")
+opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round_17.csv")
+
+
+
+
+
+
+
+
+
+
+
 
 

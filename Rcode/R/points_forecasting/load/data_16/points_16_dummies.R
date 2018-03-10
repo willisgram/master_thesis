@@ -80,4 +80,4 @@ points_round_16 <- points_round_16[,-5]
 index = data.frame( index = 1:625)
 points_round_16 <- cbind(index,points_round_16)
 
-write.csv(x = points_round_16,file = "data_16/data_16_output/points_round_16.csv",row.names = F)
+write.csv(x = points_round_16,file = "load/data_16/data_16_output/points_round_16.csv",row.names = F)

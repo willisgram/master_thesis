@@ -10,7 +10,7 @@ library(tidyverse)
 library(xlsx)
 options(stringsAsFactors = F)
 folder <- "input/"
-points_round_16 <- data.frame(index = 1:625)
+points_round_16 <- data.frame(index = 1:625) #See also dummies
 
 for( i in 5:37){
   year     <- "16"
@@ -109,7 +109,7 @@ opponent_round_16 <- opponent_round_16[,-6]
 index = data.frame( index = 1:625)
 opponent_round_16 <- cbind(index,opponent_round_16)
 
-write.csv(x = opponent_round_16,file = "data_16/data_16_output/opponent_round_16.csv",row.names = F)
+write.csv(x = opponent_round_16,file = "load/data_16/data_16_output/opponent_round_16.csv",row.names = F)
 
 #Cost
 cost_round_16 <- data.frame(index = 1:625)
@@ -157,7 +157,7 @@ cost_round_16 <- cost_round_16[,-5]
 index = data.frame( index = 1:625)
 cost_round_16 <- cbind(index,cost_round_16)
 
-write.csv(x = cost_round_16,file = "data_16/data_16_output/cost_round_16.csv",row.names = F)
+write.csv(x = cost_round_16,file = "load/data_16/data_16_output/cost_round_16.csv",row.names = F)
 
 # Structure and write xlsx
 cost_round_16[is.na(cost_round_16)] <- 100000000
@@ -217,7 +217,7 @@ team_round_16 <- team_round_16[,-5]
 index = data.frame( index = 1:625)
 team_round_16 <- cbind(index,team_round_16)
 
-write.csv(x = team_round_16,file = "data_16/data_16_output/team_round_16.csv",row.names = F)
+write.csv(x = team_round_16,file = "load/data_16/data_16_output/team_round_16.csv",row.names = F)
 
 #Position
 pos_round_16 <- data.frame(index = 1:625)
@@ -267,7 +267,7 @@ pos_round_16 <- pos_round_16[,-5]
 index = data.frame( index = 1:625)
 pos_round_16 <- cbind(index,pos_round_16)
 
-write.csv(x = pos_round_16,file = "data_16/data_16_output/pos_round_16.csv",row.names = F)
+write.csv(x = pos_round_16,file = "load/data_16/data_16_output/pos_round_16.csv",row.names = F)
 
 
 #Transfers in
@@ -320,7 +320,7 @@ trans_in_round_16 <- trans_in_round_16[,-5]
 index = data.frame( index = 1:625)
 trans_in_round_16 <- cbind(index,trans_in_round_16)
 
-write.csv(x = trans_in_round_16,file = "data_16/data_16_output/trans_in_round_16.csv",row.names = F)
+write.csv(x = trans_in_round_16,file = "load/data_16/data_16_output/trans_in_round_16.csv",row.names = F)
 
 
 #Transfers out
@@ -451,7 +451,7 @@ minutes_round_16 <- minutes_round_16[,-6]
 index = data.frame( index = 1:625)
 minutes_round_16 <- cbind(index,minutes_round_16)
 
-write.csv(x = minutes_round_16,file = "data_16/data_16_output/minutes_round_16.csv",row.names = F)
+write.csv(x = minutes_round_16,file = "load/data_16/data_16_output/minutes_round_16.csv",row.names = F)
 
 
 rm(list = c("data_temp","folder","sheet","week","year","path","i"))
