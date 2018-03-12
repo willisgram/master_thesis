@@ -19,7 +19,7 @@ library(xlsx)
 
 
 #given input
-k <- 6
+k <- 4
 h <- 5
 # week_for <- 15
 
@@ -175,24 +175,22 @@ for(week_for in 1:38){
   #################
   
   #n <- floor(week_for/k)
-  z <- week_for%%k
+  #z <- week_for%%k
   start <- 1
-  m <- (n-3)*625
+  m <- (38-k)*625
   
   #Create model
   regressors_train_16_k <- regressors_16[1:m,] %>% na.omit()
-  regressors_test_data_16_k  <- regressors_16[(m+1):(m+625),] %>% na.omit()
-  regressors_test_data_16_k  <- regressors_test_data_16_k %>% filter(index %in% regressors_train_16_k$index)
-  regressors_test_16_k  <- regressors_test_data_16_k[,names(regressors_test_data_16_k) != "realized"]
-  
-  regressors_train_16 <- regressors_16 %>% na.omit()
+  predictors_16_k  <- regressors_16[(m+1):(m+625),] %>% na.omit()
+  predictors_16_k  <- predictors_16_k %>% filter(index %in% regressors_train_16_k$index)
+  predictors_16_k  <- predictors_16_k[,names(predictors_16_k) != "realized"]
   
   options(stringsAsFactors = T)
   model_k <- lm(realized ~ .,
-                data = regressors_train_16)
+                data = regressors_train_16_k)
   
   ##Predict
-  predictions <- predict(object = model_3,newdata = regressors_test_16_k)
+  predictions <- predict(object = model_k,newdata = predictors_16_k)
   
   
   

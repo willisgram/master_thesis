@@ -3,7 +3,7 @@
 #########################
 
 round_start <- 1
-round_stop  <- 26
+round_stop  <- 27
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
