@@ -3,9 +3,11 @@
 #########################
 
 round_start <- 1
-round_stop  <- 27
+round_stop  <- 26
 
 total_points_round <- data.frame(round = round_start:round_stop,
+                                 cost = rep(0,round_stop-round_start+1),
+                                 rem_bud = rep(0,round_stop-round_start+1),
                                  points = rep(0,round_stop-round_start+1),
                                  points_brutto = rep(0,round_stop-round_start+1))
 
@@ -46,6 +48,11 @@ for (i in round_start:round_stop) {
   colnames(substitutes)[1] <- "substitutes"
   substitutes_round <- substitutes %>% mutate(index = as.integer(substitutes)) %>% select(index)
   
+  #Remaining
+  file_rem <- paste0(path,method,folder,"remaining_budget.csv")
+  rem_bud <- read.csv(file_rem,header = F)
+  colnames(rem_bud)[1] <- "remaining_budget"
+  
   final_team_round <- final_team_new(round = round,selected = selected_round,starting = starting_round,
                           substitutes = substitutes_round,minutes_round = minutes_round_17)
   if(i == 1){
@@ -64,6 +71,11 @@ for (i in round_start:round_stop) {
                                                 vice_captain = vice_captain_round,ill_trans = 0,
                                                 points_round = points_round_17,minutes_round = minutes_round_17)
  
+  cost_team <- inner_join(selected_round,cost_round_17,"index") %>% select(i+1)
+  total_points_round$cost[i] <- sum(cost_team)
+  
+  total_points_round$rem_bud[i] <- rem_bud$remaining_budget
+  
   selected_prev <- selected_round
   
 }

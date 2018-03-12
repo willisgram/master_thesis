@@ -15,15 +15,19 @@ library(xlsx)
 
 # Suggestion, only change opponent and team
 # Not using forecast as new previous
-# Also, first fit model and only update predictors
+# Also, first, fit model and only update predictors
 
 
 #given input
-k <- 3
+k <- 6
 h <- 5
 # week_for <- 15
 
-for(week_for in 6:15){
+# Train in 2016
+
+
+
+for(week_for in 1:38){
   
   # Distribute points from k matches
   ######################
@@ -32,7 +36,7 @@ for(week_for in 6:15){
   
   options(stringsAsFactors = F)
   #2 <- week_for%%k+4
-  upper_lim <- 34-(k-1)
+  upper_lim <- 39-(k-1)
   
   #points
   for (i in seq(from = 2,by = 1, to = upper_lim)) {
@@ -52,7 +56,7 @@ for(week_for in 6:15){
   }
   
   #Opponents
-  for (i in seq(from = 2,by = k, to = upper_lim)) {
+  for (i in seq(from = 2,by = 1, to = upper_lim)) {
     
     opponent_round_temp <- data.frame(index = 1:625)
     opponent_round_temp[,2] <- opponent_round_16[,(i+1)]
@@ -70,7 +74,7 @@ for(week_for in 6:15){
   opponent_round_k_16 <- opponent_round_k_16 %>% select(opponent)
   
   #Team
-  for (i in seq(from = 2,by = k, to = upper_lim)) {
+  for (i in seq(from = 2,by = 1, to = upper_lim)) {
     
     team_round_temp <- data.frame(index = 1:625)
     team_round_temp[,2] <- team_round_16[,(i)]
@@ -88,7 +92,7 @@ for(week_for in 6:15){
   team_round_k_16 <- team_round_k_16 %>% select(team)
   
   #Cost
-  for (i in seq(from = 2,by = k, to = upper_lim)) {
+  for (i in seq(from = 2,by = 1, to = upper_lim)) {
     
     cost_round_temp <- data.frame(index = 1:625)
     cost_round_temp[,2] <- cost_round_16[,(i)]
@@ -106,7 +110,7 @@ for(week_for in 6:15){
   cost_round_k_16 <- cost_round_k_16 %>% select(cost)
   
   #Pos
-  for (i in seq(from = 2,by = k, to = upper_lim)) {
+  for (i in seq(from = 2,by = 1, to = upper_lim)) {
     
     pos_round_temp <- data.frame(index = 1:625)
     pos_round_temp[,2] <- pos_round_16[,(i)]
@@ -124,7 +128,7 @@ for(week_for in 6:15){
   pos_round_k_16 <- pos_round_k_16 %>% select(pos)
   
   #Transfers in
-  for (i in seq(from = 2,by = k, to = upper_lim)) {
+  for (i in seq(from = 2,by = 1, to = upper_lim)) {
     
     trans_in_round_temp <- data.frame(index = 1:625)
     trans_in_round_temp[,2:(k+1)] <- trans_in_round_16[,i:(i+(k-1))]
@@ -143,7 +147,7 @@ for(week_for in 6:15){
   trans_in_round_k_16 <- trans_in_round_k_16 %>% select(trans_in_prev_2,trans_in_prev_1)
   
   #Transfers out
-  for (i in seq(from = 2,by = k, to = upper_lim)) {
+  for (i in seq(from = 2,by = 1, to = upper_lim)) {
     
     trans_out_round_temp <- data.frame(index = 1:625)
     trans_out_round_temp[,2:(k+1)] <- trans_out_round_16[,i:(i+(k-1))]
@@ -169,6 +173,32 @@ for(week_for in 6:15){
                          pos_round_k_16,trans_in_round_k_16,trans_out_round_k_16)
   regressors_16$index <- as.factor(regressors_16$index)
   #################
+  
+  #n <- floor(week_for/k)
+  z <- week_for%%k
+  start <- 1
+  m <- (n-3)*625
+  
+  #Create model
+  regressors_train_16_k <- regressors_16[1:m,] %>% na.omit()
+  regressors_test_data_16_k  <- regressors_16[(m+1):(m+625),] %>% na.omit()
+  regressors_test_data_16_k  <- regressors_test_data_16_k %>% filter(index %in% regressors_train_16_k$index)
+  regressors_test_16_k  <- regressors_test_data_16_k[,names(regressors_test_data_16_k) != "realized"]
+  
+  regressors_train_16 <- regressors_16 %>% na.omit()
+  
+  options(stringsAsFactors = T)
+  model_k <- lm(realized ~ .,
+                data = regressors_train_16)
+  
+  ##Predict
+  predictions <- predict(object = model_3,newdata = regressors_test_16_k)
+  
+  
+  
+  
+  
+  
   
   # Generate forecasts
   ###########
