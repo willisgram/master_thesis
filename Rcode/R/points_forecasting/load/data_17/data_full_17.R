@@ -12,7 +12,7 @@ options(stringsAsFactors = F)
 folder <- "input/"
 points_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:27){
+for( i in 1:29){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -44,7 +44,7 @@ write.csv(x = points_round_17,file = "load/data_17/data_17_output/points_round_1
 #Opponents
 opponent_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:26){
+for( i in 0:28){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -75,7 +75,7 @@ write.csv(x = opponent_round_17,file = "load/data_17/data_17_output/opponent_rou
 #Cost
 cost_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:26){
+for( i in 0:28){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -116,7 +116,7 @@ write.xlsx(cost_round_17, file_for,row.names = F)
 #Team
 team_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:26){
+for( i in 0:28){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -147,7 +147,7 @@ write.csv(x = team_round_17,file = "load/data_17/data_17_output/team_round_17.cs
 #Position
 pos_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:26){
+for( i in 0:28){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -178,7 +178,7 @@ write.csv(x = pos_round_17,file = "load/data_17/data_17_output/pos_round_17.csv"
 #Transfers in
 trans_in_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:27){
+for( i in 1:29){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -209,7 +209,7 @@ write.csv(x = trans_in_round_17,file = "load/data_17/data_17_output/trans_in_rou
 #Transfers out
 trans_out_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:27){
+for( i in 1:29){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -270,7 +270,7 @@ for( i in 1:29){
 
 minutes_round_17 <- data.frame(index = 1:625)
 
-for (i in 1:27) {
+for (i in 1:29) {
   
   if(i == 1){
     

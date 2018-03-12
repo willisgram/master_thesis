@@ -11,7 +11,7 @@ points_average_a_17 <- data.frame(index = 1:625)
 
 #points_average_a_17[,2:5] <- NA
 
-for(i in 1:27){
+for(i in 1:29){
   
   if(i <= a){
     if(i == 1){
@@ -32,7 +32,7 @@ for(i in 1:27){
   }    
   
 }
-colnames(points_average_a_17)[2:28] <- paste0("round_",1:27)
+colnames(points_average_a_17)[2:30] <- paste0("round_",1:29)
 
 ############
 
@@ -44,9 +44,9 @@ library(xlsx) #does not work on mac per now
 library(tidyverse)
 
 #s <- 1+a #first prediction with data
-h<-10
+h<-11
 
-for(week_for in 1:27){
+for(week_for in 1:29){
   
   predictions_table_average <- points_average_a_17 %>% select(index,week_for+1)
   predictions_table_average[,3:(h+1)] <- predictions_table_average[,2]

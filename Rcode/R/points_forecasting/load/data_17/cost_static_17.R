@@ -12,7 +12,7 @@ library(xlsx)
 #given input
 h <- 11
 
-for(week_for in 1:27){
+for(week_for in 1:29){
   
   cost_table <- cost_round_17 %>% select(index)
   cost_table[2] <- cost_round_17[week_for+1]
