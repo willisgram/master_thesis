@@ -4,9 +4,6 @@
 library(xlsx)
 # index - gw_1 - gw_2 ...
 
-# Suggestion, only change opponent and team
-# Not using forecast as new previous
-
 
 # Ready to use, only folder missing
 
@@ -15,7 +12,7 @@ library(xlsx)
 #given input
 h <- 11
 
-for(week_for in 1:2){
+for(week_for in 1:27){
   
   cost_table <- cost_round_17 %>% select(index)
   cost_table[2] <- cost_round_17[week_for+1]
@@ -27,7 +24,7 @@ for(week_for in 1:2){
   
   #Costs
   name_cost <- paste0("player_cost_GW", as.character(week_for),".xlsx")
-  path_cost <- '../../../input/static_data/cost/'
+  path_cost <- '../../../input/static_data/cost/season_17/'
   file_cost <- paste0(path_cost, name_cost)
   
   #assign(x = name_for,value = predictions_table)

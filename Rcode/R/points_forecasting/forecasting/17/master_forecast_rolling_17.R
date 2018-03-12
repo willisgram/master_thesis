@@ -15,7 +15,7 @@ library(xlsx)
 
 # Suggestion, only change opponent and team
 # Not using forecast as new previous
-
+# Also, first fit model and only update predictors
 
 
 #given input

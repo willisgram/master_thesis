@@ -288,7 +288,7 @@ for (i in 1:27) {
   colnames(minutes_round_17)[i+1] <- paste0("round_",i)
 }
 
-write.csv(x = minutes_round_16,file = "load/data_16/data_16_output/minutes_round_16.csv",row.names = F)
+write.csv(x = minutes_round_17,file = "load/data_17/data_17_output/minutes_round_17.csv",row.names = F)
 
 
 
