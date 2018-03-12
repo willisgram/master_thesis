@@ -11,7 +11,7 @@ points_average_a_17 <- data.frame(index = 1:625)
 
 #points_average_a_17[,2:5] <- NA
 
-for(i in 1:6){
+for(i in 1:27){
   
   if(i <= a){
     if(i == 1){
@@ -41,11 +41,12 @@ colnames(points_average_a_17)[2:28] <- paste0("round_",1:27)
 # Write files
 ##################
 library(xlsx) #does not work on mac per now
+library(tidyverse)
 
-s <- 1+a #first prediction with data
+#s <- 1+a #first prediction with data
 h<-10
 
-for(week_for in s:37){
+for(week_for in 1:27){
   
   predictions_table_average <- points_average_a_17 %>% select(index,week_for+1)
   predictions_table_average[,3:(h+1)] <- predictions_table_average[,2]
@@ -54,8 +55,8 @@ for(week_for in s:37){
   
   # Assign name
   #Forecasts
-  name_for_avg <- paste0("forecast_point_GW", as.character(week_for-s+1),".xlsx") #Due to optimization syntax
-  path_for_avg <- '../../../input/dynamic_data/forecasting_method/average/'
+  name_for_avg <- paste0("forecast_point_GW", as.character(week_for),".xlsx")
+  path_for_avg <- '../../../input/dynamic_data/season_17/forecasting_method/average/'
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
   #assign(x = name_for,value = predictions_table_average)
