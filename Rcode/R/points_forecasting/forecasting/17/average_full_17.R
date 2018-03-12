@@ -11,11 +11,19 @@ points_average_a_17 <- data.frame(index = 1:625)
 
 #points_average_a_17[,2:5] <- NA
 
-for(i in 1:27){
+for(i in 1:6){
   
   if(i <= a){
+    if(i == 1){
+      points_average_a_17[,i+1] <- rowMeans(points_round_16[,(39+(i)-a):(39)])
+    } else if(i == 2){
+      points_average_a_17[,i+1] <- (rowSums(points_round_16[,(39+(i)-a):(39)]) + points_round_17[,2])/a
+    } else if(i == a){
+      points_average_a_17[,i+1] <- (points_round_16[,39] + rowSums(points_round_17[,2:(i)]))/a
+    } else{
+      points_average_a_17[,i+1] <- (rowSums(points_round_16[,(39+(i)-a):(39)]) + rowSums(points_round_17[,2:(i)]))/a
+    }
   
-  points_average_a_17[,i+1] <- NA
       
   } else{
     
