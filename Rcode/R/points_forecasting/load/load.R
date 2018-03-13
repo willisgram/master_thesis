@@ -49,6 +49,25 @@ opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round
 
 
 
+#Write xlsx with Perfect information
+library(xlsx)
+#2016
+name_for_perf <- "forecast_point.xlsx"
+path_for_perf <- "../../../input/dynamic_data/season_16/forecasting_method/perfect_information/"
+file_for_perf <- paste0(path_for_perf, name_for_perf)
+
+points_round_16[is.na(points_round_16)] <- -10000
+
+write.xlsx(x = points_round_16,file = file_for_perf,row.names = F)
+
+#2017
+name_for_perf <- "forecast_point.xlsx"
+path_for_perf <- "../../../input/dynamic_data/season_17/forecasting_method/perfect_information/"
+file_for_perf <- paste0(path_for_perf, name_for_perf)
+
+points_round_17[is.na(points_round_17)] <- -10000
+
+write.xlsx(x = points_round_17,file = file_for_perf,row.names = F)
 
 
 
