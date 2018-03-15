@@ -75,5 +75,3 @@ write.xlsx(x = points_round_17,file = file_for_perf,row.names = F)
 
 
 
-
-
