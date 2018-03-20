@@ -5,7 +5,7 @@
 
 #Players index
 players <- read.csv(file = "load/data_all/players.csv")
-
+options(stringsAsFactors = F)
 
 ###################
 # Regressors 2016
