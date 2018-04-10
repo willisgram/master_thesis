@@ -23,6 +23,7 @@ minutes_round_16 <- read.csv(file = "load/data_16/data_16_output/minutes_round_1
 cost_round_16 <- read.csv(file = "load/data_16/data_16_output/cost_round_16.csv")
 points_round_16 <- read.csv(file = "load/data_16/data_16_output/points_round_16.csv")
 opponent_round_16 <- read.csv(file = "load/data_16/data_16_output/opponent_round_16.csv")
+h_b_16 <- read.csv(file = "load/data_16/data_16_output/h_b_16.csv")
 
 # Missing rounds data:
 #Points: 1-4 #Possible to fix
@@ -45,7 +46,7 @@ minutes_round_17 <- read.csv(file = "load/data_17/data_17_output/minutes_round_1
 cost_round_17 <- read.csv(file = "load/data_17/data_17_output/cost_round_17.csv")
 points_round_17 <- read.csv(file = "load/data_17/data_17_output/points_round_17.csv")
 opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round_17.csv")
-
+h_b_17 <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 
 
 
