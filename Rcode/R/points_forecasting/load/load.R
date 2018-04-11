@@ -4,8 +4,9 @@
 
 
 #Players index
-players <- read.csv(file = "load/data_all/players.csv")
 options(stringsAsFactors = F)
+players <- read.csv(file = "load/data_all/players.csv")
+
 
 ###################
 # Regressors 2016
@@ -24,6 +25,11 @@ cost_round_16 <- read.csv(file = "load/data_16/data_16_output/cost_round_16.csv"
 points_round_16 <- read.csv(file = "load/data_16/data_16_output/points_round_16.csv")
 opponent_round_16 <- read.csv(file = "load/data_16/data_16_output/opponent_round_16.csv")
 h_b_16 <- read.csv(file = "load/data_16/data_16_output/h_b_16.csv")
+
+# Per team
+path <- '../../../Data/BK/opponents.csv'
+opponents_16 <- read.csv2(path)
+opponents_16 <- opponents_16 %>% mutate_all(.funs = toupper)
 
 # Missing rounds data:
 #Points: 1-4 #Possible to fix
@@ -48,6 +54,9 @@ points_round_17 <- read.csv(file = "load/data_17/data_17_output/points_round_17.
 opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round_17.csv")
 h_b_17 <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 
+# Per team
+path <- '../../../Data/BK/opponents_17.csv'
+opponents_17 <- read.csv2(path)
 
 
 #Write xlsx with Perfect information
