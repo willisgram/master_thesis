@@ -37,8 +37,8 @@ colnames(points_average_a_17)[2:30] <- paste0("round_",1:29)
 
 ## Adjust for home/away
 
-home <- 1.129
-away <- 0.871
+home <- 1.25
+away <- 0.75
 
 # Create dummy dataframe
 h_a <- data.frame(index = 1:625)

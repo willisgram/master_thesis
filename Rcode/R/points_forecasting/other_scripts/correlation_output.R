@@ -5,25 +5,10 @@ library(stringr)
 library(tidyverse)
 options(stringsAsFactors = F)
 
-#Round 1
-cor_17 <- data.frame(matrix(nrow = 625,ncol = 625,0))
-colnames(cor_17)[1:625] <- 1:625
-diag(cor_17) <- 1
-
-index <- data.frame(index = 1:625)
-cor_17 <- cbind(index,cor_17)
-
-cor_17 <- cbind(players,cor_17,"index")
-
 # Same team
 players_short <- players %>% group_by(PositionsList,Team) %>% summarise() %>% mutate(
   tag = paste(PositionsList,Team,sep = "_")
 )
-
-cor_temp <- as.data.frame(matrix(nrow = 80,ncol = 80,0))
-colnames(cor_temp) <- players_short$key
-cor_temp <- cbind(players_short,cor_temp)
-cor_temp <- if_else(condition = cor_temp$ key)
 
 opponents_short <- opponents_17 %>% select(Team,GW1)
 opponents_tagged <- inner_join(players,opponents_short,"Team")
@@ -37,9 +22,6 @@ cor_17 <- data.frame(matrix(nrow = 626,ncol = 626,0))
 cor_17[1,2:626] <- players_tagged$tag
 cor_17[2:626,1] <- players_tagged$tag
 
-cor_17[,] <- if_else(condition = cor_17[,1] == cor_17[1,],true = 1,false = 0)
-
-
 # Same poistion
 for (i in 2:626) {
   for (j in 2:626) {
@@ -48,23 +30,91 @@ for (i in 2:626) {
   
 }
 
-# GK DEF same team
+# GLK DEF same team
 for (i in 2:626) {
   for (j in 2:626) {
     cor_17[i,j] <- if_else(
-      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.5,false = as.numeric(cor_17[i,j])
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.689,false = as.numeric(cor_17[i,j])
       )
+  }
+  
+}
+# DEF GLK same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "DEF" & str_sub(cor_17[1,j],end = 3) == "GLK" ,true = 0.689,false = as.numeric(cor_17[i,j])
+    )
   }
   
 }
 
 
+# GLK MID same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.274,false = as.numeric(cor_17[i,j])
+    )
+  }
+  
+}
+# MID GLK same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "GLK" ,true = 0.274,false = as.numeric(cor_17[i,j])
+    )
+  }
+  
+}
 
 
+# DEF MID same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "DEF" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.368,false = as.numeric(cor_17[i,j])
+    )
+  }
+  
+}
+# MID DEF same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.368,false = as.numeric(cor_17[i,j])
+    )
+  }
+  
+}
 
 
+# MID FWD same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "FWD" ,true = 0.238,false = as.numeric(cor_17[i,j])
+    )
+  }
+  
+}
+# FWD MID same team
+for (i in 2:626) {
+  for (j in 2:626) {
+    cor_17[i,j] <- if_else(
+      condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "FWD" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.238,false = as.numeric(cor_17[i,j])
+    )
+  }
+  
+}
 
 
+cor_team <- mutate_all(cor_17[2:626,2:626],as.numeric)
+cor_test2 <- cor_17[,275:277]
+
+write.csv(x = cor_team,file = "load/data_17/data_17_output/cor_team.csv",row.names = F)
+write.csv(x = cor_17,file = "load/data_17/data_17_output/cor_17.csv",row.names = F)
 
 
 

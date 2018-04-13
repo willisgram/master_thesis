@@ -1,7 +1,7 @@
 ############
 # Load verified static data
 ############
-
+library(tidyverse)
 
 #Players index
 options(stringsAsFactors = F)
@@ -52,11 +52,16 @@ minutes_round_17 <- read.csv(file = "load/data_17/data_17_output/minutes_round_1
 cost_round_17 <- read.csv(file = "load/data_17/data_17_output/cost_round_17.csv")
 points_round_17 <- read.csv(file = "load/data_17/data_17_output/points_round_17.csv")
 opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round_17.csv")
-h_b_17 <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
+opponent_round_17_short <- read.csv(file = "load/data_17/data_17_output/opponent_round_17_short.csv")
+h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 
 # Per team
 path <- '../../../Data/BK/opponents_17.csv'
 opponents_17 <- read.csv2(path)
+
+# Correlation
+
+cor_team <- read.csv(file = "load/data_17/data_17_output/cor_team.csv")
 
 
 #Write xlsx with Perfect information

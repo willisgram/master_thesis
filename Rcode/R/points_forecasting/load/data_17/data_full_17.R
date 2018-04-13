@@ -72,6 +72,30 @@ for( i in 0:28){
 
 write.csv(x = opponent_round_17,file = "load/data_17/data_17_output/opponent_round_17.csv",row.names = F)
 
+opponent_round_17_short <- opponent_round_17
+opponent_round_17_short[opponent_round_17_short == "Arsenal"] <- "ARS"
+opponent_round_17_short[opponent_round_17_short == "Brighton"] <- "BHA"
+opponent_round_17_short[opponent_round_17_short == "Bournemouth"] <- "BOU"
+opponent_round_17_short[opponent_round_17_short == "Burnley"] <- "BUR"
+opponent_round_17_short[opponent_round_17_short == "Chelsea"] <- "CHE"
+opponent_round_17_short[opponent_round_17_short == "Crystal Palace"] <- "CRY"
+opponent_round_17_short[opponent_round_17_short == "Everton"] <- "EVE"
+opponent_round_17_short[opponent_round_17_short == "Huddersfield"] <- "HUD"
+opponent_round_17_short[opponent_round_17_short == "Leicester"] <- "LEI"
+opponent_round_17_short[opponent_round_17_short == "Liverpool"] <- "LIV"
+opponent_round_17_short[opponent_round_17_short == "Man City"] <- "MCI"
+opponent_round_17_short[opponent_round_17_short == "Man Utd"] <- "MUN"
+opponent_round_17_short[opponent_round_17_short == "Newcastle"] <- "NEW"
+opponent_round_17_short[opponent_round_17_short == "Southampton"] <- "SOU"
+opponent_round_17_short[opponent_round_17_short == "Stoke"] <- "STK"
+opponent_round_17_short[opponent_round_17_short == "Swansea"] <- "SWA"
+opponent_round_17_short[opponent_round_17_short == "Tottenham"] <- "TOT"
+opponent_round_17_short[opponent_round_17_short == "Watford"] <- "WAT"
+opponent_round_17_short[opponent_round_17_short == "West Brom"] <- "WBA"
+opponent_round_17_short[opponent_round_17_short == "West Ham"] <- "WHU"
+
+write.csv(x = opponent_round_17_short,file = "load/data_17/data_17_output/opponent_round_17_short.csv",row.names = F)
+
 #Cost
 cost_round_17 <- data.frame(index = 1:625)
 
@@ -138,7 +162,7 @@ for( i in 0:28){
   data_temp <- data_temp %>% select(index,Team.x) %>% arrange(index)
   
   team_round_17 <- cbind(team_round_17,data_temp$Team.x)
-  colnames(team_round_17)[i+1] <- paste0("round_",i)
+  colnames(team_round_17)[i+2] <- paste0("round_",i+1)
   
 }
 
