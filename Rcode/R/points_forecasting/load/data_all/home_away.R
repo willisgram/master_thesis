@@ -39,5 +39,66 @@ players_join <- players %>% select(index,Team)
 h_b_17 <- inner_join(players_join,data_17,"Team")
 h_b_17  <- h_b_17[,names(h_b_17) != "Team"]
 
-write.csv(x = h_b_17,file = "load/data_17/data_17_output/h_b_17.csv",row.names = F)
+# Home/away new (not w double gw explicit)
+path <- '../../../Data/BK/H.A.17.18_short.csv'
+h_a_17 <- read.csv2(file = path,header = T)
+h_a_player <- data.frame(matrix(nrow = 625,ncol = 38,"W"))
+team_round_17_short <- team_round_17[,names(team_round_17)!= "index"]
+
+for (j in 1:38) {
+  for (i in 1:625) {
+    for (k in 1:20) {
+      if(team_round_17_short[i,j] == h_a_17[k,1] & !is.na(team_round_17_short[i,j])){
+        index <- k
+        h_a_player[i,j] <- h_a_17[index,j+1]
+        break
+      }
+    }
+  }
+}
+
+
+write.csv(x = h_a_player,file = "load/data_17/data_17_output/h_a_17_player.csv",row.names = F)
+
+# Home/away/double gw / no gw:
+
+path <- '../../../Data/BK/H.A.D.17.18.csv'
+
+gw_17 <- read.csv2(file = path,header = T)
+gw_player <- data.frame(matrix(nrow = 625,ncol = 38,"W"))
+team_round_17_short <- team_round_17[,names(team_round_17)!= "index"]
+
+for (j in 1:38) {
+  for (i in 1:625) {
+    for (k in 1:20) {
+      if(team_round_17_short[i,j] == gw_17[k,1] & !is.na(team_round_17_short[i,j])){
+        index <- k
+        gw_player[i,j] <- gw_17[index,j+1]
+        break
+      }
+    }
+  }
+}
+
+H <- 1
+A <- 1
+N <- 0
+D <- 2
+
+gw_player_num <- gw_player
+gw_player_num[gw_player_num =="H"] <- as.numeric(H)
+gw_player_num[gw_player_num =="A"] <- as.numeric(A)
+gw_player_num[gw_player_num =="N"] <- as.numeric(N)
+gw_player_num[gw_player_num =="D"] <- as.numeric(D)
+gw_player_num[gw_player_num =="W"] <- NA
+
+write.csv(x = gw_player_num,file = "load/data_17/data_17_output/gw_player_num.csv",row.names = F)
+
+
+
+
+
+
+
+
 

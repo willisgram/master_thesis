@@ -166,6 +166,9 @@ for( i in 0:28){
   
 }
 
+team_round_17[,31:39] <- team_round_17[,30]
+colnames(team_round_17)[31:39] <- paste0("round_",30:38) 
+
 write.csv(x = team_round_17,file = "load/data_17/data_17_output/team_round_17.csv",row.names = F)
 
 #Position

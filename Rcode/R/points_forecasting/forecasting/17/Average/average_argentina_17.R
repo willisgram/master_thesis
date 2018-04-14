@@ -4,13 +4,14 @@
 library(tidyverse)
 
 a <- 3
+last_gw <- 29
 points_average_a_17 <- data.frame(index = 1:625)
 
 #########
 # Average
 #########
 
-for(i in 1:20){
+for(i in 1:last_gw){
   
   if(i <= a){
     if(i == 1){
@@ -31,7 +32,7 @@ for(i in 1:20){
   }    
   
 }
-colnames(points_average_a_17)[2:21] <- paste0("round_",1:20)
+colnames(points_average_a_17)[2:(last_gw+1)] <- paste0("round_",1:last_gw)
 #########
 
 ########
@@ -44,9 +45,10 @@ away <- 0.95
 h_a_17_num <- h_a_17
 h_a_17_num[h_a_17_num =="H"] <- as.numeric(home)
 h_a_17_num[h_a_17_num =="A"] <- as.numeric(away)
+h_a_17_num[h_a_17_num =="W"] <- NA
 h_a_17_num <- data.matrix(h_a_17_num)
 
-score <- points_average_a_17[,2:21]*h_a_17_num[,2:21]
+score <- points_average_a_17[,2:(last_gw+1)]*h_a_17_num[,1:(last_gw)]
 ##########
 
 ########
@@ -60,7 +62,7 @@ points_17 <- points_round_17[,names(points_round_17) != "index"]
 
 ## Positive streak
 for (i in 1:625) {
-  for (j in 2:20) {
+  for (j in 2:last_gw) {
     if(j>5){
       if(all(points_17[i,(j-5):(j-1)]>X) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-5):(j-1)]))){
         streak_matrix[i,j] <- 1.05
@@ -91,7 +93,7 @@ for (i in 1:625) {
 
 ## Negative streak
 for (i in 1:625) {
-  for (j in 2:20) {
+  for (j in 2:last_gw) {
     if(j>5){
       if(all(points_17[i,(j-5):(j-1)]<Y) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-5):(j-1)]))){
         streak_matrix[i,j] <- 0.95
@@ -120,7 +122,7 @@ for (i in 1:625) {
   }
 }
 
-score <- score*streak_matrix[,1:20]
+score <- score*streak_matrix[,1:last_gw]
 
 
 
@@ -130,14 +132,32 @@ score <- score*streak_matrix[,1:20]
 # Team Ranking
 ########
 path <- '../../../Data/BK/League-table.csv'
-ranking <- read.csv2(path)
-ranking_players <- inner_join(players,ranking,"Team")
-ranking_players <- ranking_players[,6:25]
-ranking_players <- data.matrix(ranking_players)
 
-score <- score*ranking_players
+ranking_17 <- read.csv2(file = path,header = T)
+ranking_player <- data.frame(matrix(nrow = 625,ncol = 38,10))
+team_round_17_short <- team_round_17[,names(team_round_17)!= "index"]
+
+for (j in 1:last_gw) {
+  for (i in 1:625) {
+    for (k in 1:20) {
+      if(team_round_17_short[i,j] == ranking_17[k,1] & !is.na(team_round_17_short[i,j])){
+        index <- k
+        ranking_player[i,j] <- ranking_17[index,j+1]
+        break
+      }
+    }
+  }
+}
+ranking_player <- data.matrix(ranking_player)
+score <- score*ranking_player[,1:last_gw]
 
 #########
+
+# Dobule/no gameweek
+#############
+gw_player_num <- data.matrix(gw_player_num)
+score <- score*gw_player_num[,1:last_gw]
+############
 
 #################
 # Write files
@@ -149,7 +169,7 @@ h<-11
 score <- cbind(points_average_a_17[,1],score)
 colnames(score)[1] <- "index"
 
-for(week_for in 1:20){
+for(week_for in 1:last_gw){
   
   predictions_table_average <- score %>% select(index,week_for+1)
   predictions_table_average[,3:(h+1)] <- predictions_table_average[,2]

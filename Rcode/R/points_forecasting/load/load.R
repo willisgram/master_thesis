@@ -44,7 +44,7 @@ opponents_16 <- opponents_16 %>% mutate_all(.funs = toupper)
 
 #Completed round data
 #1-27
-team_round_17 <- read.csv(file = "load/data_17/data_17_output/team_round_17.csv")
+
 pos_round_17 <- read.csv(file = "load/data_17/data_17_output/pos_round_17.csv")
 trans_in_round_17 <- read.csv(file = "load/data_17/data_17_output/trans_in_round_17.csv")
 trans_out_round_17 <- read.csv(file = "load/data_17/data_17_output/trans_out_round_17.csv")
@@ -53,7 +53,13 @@ cost_round_17 <- read.csv(file = "load/data_17/data_17_output/cost_round_17.csv"
 points_round_17 <- read.csv(file = "load/data_17/data_17_output/points_round_17.csv")
 opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round_17.csv")
 opponent_round_17_short <- read.csv(file = "load/data_17/data_17_output/opponent_round_17_short.csv")
-h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
+h_a_17_double <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
+h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_a_17_player.csv")
+
+#1-40
+team_round_17 <- read.csv(file = "load/data_17/data_17_output/team_round_17.csv")
+gw_player_num <- read.csv(file = "load/data_17/data_17_output/gw_player_num.csv")
+
 
 # Per team
 path <- '../../../Data/BK/opponents_17.csv'
