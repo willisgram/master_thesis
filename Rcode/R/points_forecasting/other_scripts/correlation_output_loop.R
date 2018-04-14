@@ -11,7 +11,7 @@ options(stringsAsFactors = F)
 cor_team <- read.csv(file = "load/data_17/data_17_output/cor_team.csv")
 
 
-for (n in 1:5) {
+for (n in 1:20) {
   
   players_short <- players %>% group_by(PositionsList,Team) %>% summarise() %>% mutate(
     tag = paste(PositionsList,Team,sep = "_")

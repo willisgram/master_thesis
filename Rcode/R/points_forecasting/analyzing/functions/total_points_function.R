@@ -320,3 +320,51 @@ total_points <- function(round,final_team,captain,vice_captain,ill_trans,points_
   return(total_points) 
   
 }
+
+total_points_chips <- function(round,final_team,captain,vice_captain,triple_captain,penalty,points_round,minutes_round){
+  
+  points_players <- inner_join(points_round,final_team,by = "index")
+  points_players <- points_players %>% select(index, matches(paste0("round_",as.character(round))))
+  colnames(points_players)[2] <- "points"
+  
+  #Captain/vice captain/triple captain
+  
+  minutes_played_cap  <- inner_join(captain,minutes_round,by = "index") %>% select(
+    index,matches(paste0("round_",as.character(round))))
+  colnames(minutes_played_cap)[2] <- "min_played"
+  minutes_played_vice_cap  <- inner_join(vice_captain,minutes_round,by = "index") %>% select(
+    index,matches(paste0("round_",as.character(round))))
+  colnames(minutes_played_vice_cap)[2] <- "min_played"
+  
+  
+  if(minutes_played_cap$min_played != 0){
+    if(triple_captain != 0){
+      points_players$points <- if_else(condition = points_players$index == captain$index,
+                                       true = points_players$points*3,
+                                       false = points_players$points*1)  
+    } else{
+      points_players$points <- if_else(condition = points_players$index == captain$index,
+                                       true = points_players$points*2,
+                                       false = points_players$points*1)
+      }
+    
+  } 
+  
+  if(minutes_played_cap$min_played == 0 & minutes_played_vice_cap$min_played != 0){
+    if(triple_captain != 0){
+      points_players$points <- if_else(condition = points_players$index == vice_captain$index,
+                                       true = points_players$points*3,
+                                       false = points_players$points*1)  
+    } else{
+      points_players$points <- if_else(condition = points_players$index == vice_captain$index,
+                                       true = points_players$points*2,
+                                       false = points_players$points*1)
+    }
+    
+  }
+  
+  total_points <- sum(points_players$points)-penalty
+  
+  return(total_points) 
+  
+}
