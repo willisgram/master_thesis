@@ -51,6 +51,8 @@ elo_player_history <- elo_opponent/elo_team
 
 # Adjust historic performance with Elo rating of opponent
 points_round_17_elo <- points_round_17[,2:(last_gw+1)]*elo_player_history
+index <- 1:625
+points_round_17_elo <- cbind(index,points_round_17_elo)
 
 # Calculate average Elo adjusted performance
 points_average_a_17 <- data.frame(index = 1:625)

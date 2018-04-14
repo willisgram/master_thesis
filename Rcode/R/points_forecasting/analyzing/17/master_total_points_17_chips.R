@@ -11,7 +11,9 @@ total_points_round <- data.frame(round = round_start:round_stop,
                                  rem_bud = rep(0,round_stop-round_start+1),
                                  points = rep(0,round_stop-round_start+1),
                                  points_brutto = rep(0,round_stop-round_start+1),
-                                 chip = rep(0,round_stop-round_start+1))
+                                 chip = rep(0,round_stop-round_start+1),
+                                 ill_trans = rep(0,round_stop-round_start+1),
+                                 ill_trans_test = rep(0,round_stop-round_start+1))
 
 for (i in round_start:round_stop) {
   
@@ -117,10 +119,22 @@ for (i in round_start:round_stop) {
   cost_team <- inner_join(selected_round,cost_round_17,"index") %>% select(i+1)
   total_points_round$cost[i] <- sum(cost_team)
   total_points_round$rem_bud[i] <- rem_bud$remaining_budget
+  total_points_round$ill_trans[i] <- ill_trans_round
+  
+  #ill trans test
+  if(i != 1){
+    
+    total_points_round$ill_trans_test[i] <- 14 - dim(inner_join(selected_round,selected_prev,'index'))[1]
+  }
+  
+  
+  
   if(wildcard_round != 0 | bench_boost_round != 0 | free_hit_round != 0 | triple_captain_round != 0){
     total_points_round$chip[i] <- 1
   }
-  
+ 
+  selected_prev <- selected_round
+   
 }
 
 total_points_round$points <- as.numeric(total_points_round$points)
