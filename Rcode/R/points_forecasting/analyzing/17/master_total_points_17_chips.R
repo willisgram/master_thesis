@@ -4,7 +4,7 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 3
+round_stop  <- 28
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
@@ -122,3 +122,5 @@ for (i in round_start:round_stop) {
   }
   
 }
+
+total_points_round$points <- as.numeric(total_points_round$points)
