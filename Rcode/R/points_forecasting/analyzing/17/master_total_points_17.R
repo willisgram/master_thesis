@@ -4,7 +4,7 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 27
+round_stop  <- 3
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
@@ -49,10 +49,43 @@ for (i in round_start:round_stop) {
   colnames(substitutes)[1] <- "substitutes"
   substitutes_round <- substitutes %>% mutate(index = as.integer(substitutes)) %>% select(index)
   
+  #Illegal transfers
+  file_ill_sub <- paste0(path,method,folder,"number_illegal_transfers.csv")
+  ill_trans <- read.csv(file_ill_trans,header = F)
+  colnames(ill_trans)[1] <- "ill_trans"
+  ill_trans_round <- ill_trans %>% mutate(index = as.integer(ill_trans)) %>% select(index)
+  
   #Remaining
   file_rem <- paste0(path,method,folder,"remaining_budget.csv")
   rem_bud <- read.csv(file_rem,header = F)
   colnames(rem_bud)[1] <- "remaining_budget"
+  
+  #Gamechips
+  #############
+  # Triple Captain
+  file_triple_captain <- paste0(path,method,folder,"triple_captain.csv")
+  triple_captain <- read.csv(file_triple_captain,header = F)
+  colnames(triple_captain)[1] <- "triple_captain"
+  triple_captain_round <- triple_captain %>% mutate(index = as.integer(triple_captain)) %>% select(index)
+  
+  # Wildcard
+  file_wildcard <- paste0(path,method,folder,"wildcard.csv")
+  wildcard <- read.csv(file_wildcard,header = F)
+  colnames(wildcard)[1] <- "wildcard"
+  wildcard_round <- wildcard %>% mutate(index = as.integer(wildcard)) %>% select(index)
+  
+  # Free Hit
+  file_free_hit <- paste0(path,method,folder,"free_hit.csv")
+  free_hit <- read.csv(file_free_hit,header = F)
+  colnames(free_hit)[1] <- "free_hit"
+  free_hit_round <- free_hit %>% mutate(index = as.integer(free_hit)) %>% select(index)
+  
+  # Bench boost
+  file_bench_boost <- paste0(path,method,folder,"bench_boost.csv")
+  bench_boost <- read.csv(file_bench_boost,header = F)
+  colnames(bench_boost)[1] <- "bench_boost"
+  bench_boost_round <- bench_boost %>% mutate(index = as.integer(bench_boost)) %>% select(index)
+  #############
   
   final_team_round <- final_team_new(round = round,selected = selected_round,starting = starting_round,
                           substitutes = substitutes_round,minutes_round = minutes_round_17)

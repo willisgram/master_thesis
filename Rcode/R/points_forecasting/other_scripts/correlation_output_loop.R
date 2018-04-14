@@ -11,7 +11,7 @@ options(stringsAsFactors = F)
 cor_team <- read.csv(file = "load/data_17/data_17_output/cor_team.csv")
 
 
-for (n in 1:20) {
+for (n in 1:5) {
   
   players_short <- players %>% group_by(PositionsList,Team) %>% summarise() %>% mutate(
     tag = paste(PositionsList,Team,sep = "_")
@@ -179,7 +179,15 @@ for (n in 1:20) {
     }
     
   }
-
+  
+  # Format
+  cor_opp_form <- cor_opp[3:627,3:627] 
+  cor_opp_form <- data.matrix(cor_opp_form)
+  cor_opp_form <- data.frame(cor_opp_form)
+  index <- data.frame(index = 1:625)
+  cor_opp_form <- cbind(index,cor_opp_form)
+  colnames(cor_opp_form)[2:626] <- 1:625
+  
   # Assign name
   name_cor <- paste0("correlation_GW", as.character(n),".xlsx")
   path_cor <- '../../../input/dynamic_data/season_17/correlation/'
@@ -187,7 +195,7 @@ for (n in 1:20) {
   
   # Write xlsx file
   rownames(cor_opp) <- NULL
-  write.xlsx(cor_opp, file_cor,row.names = F)
+  write.xlsx(cor_opp_form, file_cor,row.names = F)
   
   
   
