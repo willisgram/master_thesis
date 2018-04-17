@@ -8,7 +8,7 @@ options(stringsAsFactors = F)
 
 # Data
 
-cor_team <- read.csv(file = "load/data_17/data_17_output/cor_team.csv")
+
 
 for (n in 1:20) {
   
@@ -30,6 +30,11 @@ for (n in 1:20) {
   cor_opp[3:627,1] <- players_tagged$tag
   cor_opp[2,3:627] <- players_tagged$opp
   cor_opp[3:627,2] <- players_tagged$opp
+  
+  folder_cor_team <- "load/data_17/data_17_output/cor_team_17/"
+  file_cor_team   <- paste0(folder_cor_team,"cor_team_GW",as.character(m),".csv")
+  
+  cor_team <- read.csv(file = file_cor_team)
   
   cor_opp[3:627,3:627] <- cor_team
   

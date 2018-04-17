@@ -5,6 +5,7 @@ library(stringr)
 library(tidyverse)
 options(stringsAsFactors = F)
 
+last_gw <- 20
 
 for (n in 1:last_gw) {
   
@@ -114,10 +115,14 @@ for (n in 1:last_gw) {
 
   
   cor_team <- mutate_all(cor_17[2:626,2:626],as.numeric)
-  cor_test2 <- cor_17[,275:277]
+  #cor_test2 <- cor_17[,275:277]
   
-  write.csv(x = cor_team,file = "load/data_17/data_17_output/cor_team.csv",row.names = F)
-  write.csv(x = cor_17,file = "load/data_17/data_17_output/cor_17.csv",row.names = F)
+  name <- paste0("cor_team_GW",n,".csv")
+  folder <- "load/data_17/data_17_output/cor_team_17/"
+  file <- paste0(folder,name)
+  
+  write.csv(x = cor_team,file = file,row.names = F)
+  #write.csv(x = cor_17,file = "load/data_17/data_17_output/cor_17.csv",row.names = F)
   
 }
 

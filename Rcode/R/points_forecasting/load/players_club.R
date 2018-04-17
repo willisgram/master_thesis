@@ -5,7 +5,7 @@ library(tidyverse)
 library(xlsx)
 options(stringsAsFactors = F)
 
-last_gw <- 20
+last_gw <- 30
 
 for (n in 1:last_gw) {
   
@@ -34,11 +34,18 @@ for (n in 1:last_gw) {
     WAT = if_else(Team == "WAT",1,0),
     WBA = if_else(Team == "WBA",1,0),
     WHU = if_else(Team == "WHU",1,0)
-  ) %>% select(ARS,BHA,BOU,BUR,CHE,CRY,EVE,HUD,LEI,LIV,MCI,MUN,NEW,SOU,STK,SWA,TOT,WAT,WBA,WHU)
+  ) %>% select(index,ARS,BHA,BOU,BUR,CHE,CRY,EVE,HUD,LEI,LIV,MCI,MUN,NEW,SOU,STK,SWA,TOT,WAT,WBA,WHU)
   
+  players_club[is.na(players_club)] <- 0
   
+  name_play <- paste0("player_club_GW", as.character(n),".xlsx")
+  path_play <- '../../../input/dynamic_data/season_17/player_club/'
+  file_play<- paste0(path_play, name_play)
   
-  write.xlsx(players_club, "output/players_static_club.xlsx")
+  # Write xlsx file
+  rownames(players_club) <- NULL
+  write.xlsx(players_club, file_play,row.names = F)
+  
   
 }
   
