@@ -8,15 +8,16 @@
 library(tidyverse)
 library(xlsx)
 
+last_gw <- 25
 model_k = lm(realized ~ prev_4 + prev_3 + prev_2 + prev_1 + cost + opponent,data = regressors_16)
-
+forecasts_regression <- data.frame(index = 1:625)
 
 k <- 6 # That is, 5 previous are needed
 h <- 5 # Horizon of forecast
 
 ## CONSTANT IN FORECAST
 # Points:
-for (i in 1:10) {
+for (i in 1:last_gw) {
   
   if(i < k){
     if(i == 1){
@@ -120,19 +121,21 @@ for (i in 1:10) {
     # Stucture back to standard format and write xlsx
     ###############
     
+    forecasts_regression[,i+1] <- predictions_table[,2]
+    
     # Create NAs for predictions
-    predictions_table[is.na(predictions_table)] <- -10000
+    #predictions_table[is.na(predictions_table)] <- -10000
     
     # Assign name
-    name_for <- paste0("forecast_point_GW", as.character(i),".xlsx")
-    path_for <- '../../../input/dynamic_data/season_17/forecasting_method/regression/'
-    file_for <- paste0(path_for, name_for)
+    #name_for <- paste0("forecast_point_GW", as.character(i),".xlsx")
+    #path_for <- '../../../input/dynamic_data/season_17/forecasting_method/regression/'
+    #file_for <- paste0(path_for, name_for)
     
     #assign(x = name_for,value = predictions_table)
     
     # Write xlsx file
-    rownames(predictions_table) <- NULL
-    write.xlsx(predictions_table, file_for,row.names = F)
+    #rownames(predictions_table) <- NULL
+    #write.xlsx(predictions_table, file_for,row.names = F)
     #################
 }  
   

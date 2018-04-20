@@ -1,0 +1,63 @@
+#############
+# Injuries
+#############
+
+path <- '../../../Data/BK/injuries.csv'
+injuries <- read.csv2(file = path)
+colnames(injuries)[1] <- "FirstName"
+colnames(injuries)[2] <- "Surname"
+
+injuries_name <- injuries %>% mutate(
+  Surname_1   = if_else(grepl(Surname,pattern = " "),sub('.* ', '', Surname),Surname),
+  FirstName_1 = if_else(grepl(Surname,pattern = " "),sub(' .*', '',Surname ), FirstName)
+)
+
+injuries_all <- inner_join(players,injuries_name,by = c("FirstName_1", "Surname_1"))
+
+injuries_17 <- injuries_all[,names(injuries_all) != c("Team.x","Team.y","PositionsList")]
+injuries_17 <- injuries_17[,names(injuries_17) != "FirstName"]
+injuries_17 <- injuries_17[,names(injuries_17) != "Surname"]
+injuries_17 <- injuries_17[,names(injuries_17) != "FirstName_1"]
+injuries_17 <- injuries_17[,names(injuries_17) != "Surname_1"]
+
+last_gw <- 29
+injuries_17 <- injuries_17[,1:(last_gw+1)]
+injuries_17 <- mutate_all(injuries_17,as.numeric)
+
+
+for (i in 2:(last_gw)) {
+  
+  if(i == 2){
+    injuries_17[,i] <- if_else(condition = injuries_17[,i+1] == 1 & injuries_17[,i] == 0,
+                               true = 1,
+                               false = injuries_17[,i])
+  }
+  else{
+    injuries_17[,i] <- if_else(condition = injuries_17[i-1] == 1 & injuries_17[i+1] == 1 & injuries_17[i] == 0,
+                               true = 1,
+                               false = injuries_17[,i])  
+  }
+  
+    
+}
+
+injuries_17 <- injuries_17[,names(injuries_17) != "index"]
+injuries_17[injuries_17 != 1] <- 0
+index <- data.frame(index = 1:625)
+injuries_17 <- cbind(index,injuries_17)
+
+name <- "injuries_17.csv"
+folder <- "load/data_17/data_17_output/"
+file <- paste0(folder,name)
+
+write.csv(x = injuries_17,file = file,row.names = F)
+
+
+
+
+
+
+
+
+
+

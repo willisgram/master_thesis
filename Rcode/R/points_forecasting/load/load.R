@@ -55,6 +55,7 @@ opponent_round_17 <- read.csv(file = "load/data_17/data_17_output/opponent_round
 opponent_round_17_short <- read.csv(file = "load/data_17/data_17_output/opponent_round_17_short.csv")
 h_a_17_double <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_a_17_player.csv")
+injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
 
 #1-40
 team_round_17 <- read.csv(file = "load/data_17/data_17_output/team_round_17.csv")

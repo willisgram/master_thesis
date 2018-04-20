@@ -178,6 +178,16 @@ gw_player_num <- data.matrix(gw_player_num)
 score <- score*gw_player_num[,1:last_gw]
 ############
 
+# injuries
+#############
+injuries_17 <- data.matrix(injuries_17)
+injuries_17 <- injuries_17[,2:(last_gw+1)]
+score <- score*injuries_17
+############
+
+#For accuracy tests
+forecasts_improved <- score
+
 #################
 # Write files
 ##################
@@ -185,7 +195,7 @@ library(xlsx) #does not work on mac per now
 
 h<-11
 elo_player_future <- elo_team/elo_opponent
-# Add line adjusting for double gameweek elo
+# Add line adjusting for double gameweek elo (?)
 
 for(week_for in 1:last_gw){
   

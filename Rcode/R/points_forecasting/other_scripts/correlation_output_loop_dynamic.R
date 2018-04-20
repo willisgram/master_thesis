@@ -8,9 +8,9 @@ options(stringsAsFactors = F)
 
 # Data
 
+last_gw <- 29
 
-
-for (n in 1:20) {
+for (n in 1:last_gw) {
   
   players_team_round <- players %>% select(index,PositionsList)
   team <- team_round_17 %>% select(n+1)
@@ -32,7 +32,7 @@ for (n in 1:20) {
   cor_opp[3:627,2] <- players_tagged$opp
   
   folder_cor_team <- "load/data_17/data_17_output/cor_team_17/"
-  file_cor_team   <- paste0(folder_cor_team,"cor_team_GW",as.character(m),".csv")
+  file_cor_team   <- paste0(folder_cor_team,"cor_team_GW",as.character(n),".csv")
   
   cor_team <- read.csv(file = file_cor_team)
   
@@ -190,6 +190,8 @@ for (n in 1:20) {
   index <- data.frame(index = 1:625)
   cor_opp_form <- cbind(index,cor_opp_form)
   colnames(cor_opp_form)[2:626] <- 1:625
+  cor_opp_form[is.na(cor_opp_form)] <- 0
+  
   
   # Assign name
   name_cor <- paste0("correlation_GW", as.character(n),".xlsx")
@@ -197,7 +199,7 @@ for (n in 1:20) {
   file_cor <- paste0(path_cor, name_cor)
   
   # Write xlsx file
-  rownames(cor_opp) <- NULL
+  rownames(cor_opp_form) <- NULL
   write.xlsx(cor_opp_form, file_cor,row.names = F)
   
   

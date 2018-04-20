@@ -5,7 +5,7 @@ library(stringr)
 library(tidyverse)
 options(stringsAsFactors = F)
 
-last_gw <- 20
+last_gw <- 29
 
 for (n in 1:last_gw) {
   
@@ -20,6 +20,10 @@ for (n in 1:last_gw) {
   players_team_round <- players_team_round %>% mutate(tag = paste(PositionsList,Team,sep = "_")) %>% select(
     index, Team, tag, opp)
   
+  #players_team_round$tag <- if_else(condition = is.na(players_team_round$opp),
+                                    #true = players_team_round$tag <- NA,
+                                    #false = players_team_round$tag )
+  
   players_tagged <- players_team_round
   
   cor_17 <- data.frame(matrix(nrow = 626,ncol = 626,0))
@@ -29,7 +33,7 @@ for (n in 1:last_gw) {
   # Same poistion
   for (i in 2:626) {
     for (j in 2:626) {
-      cor_17[i,j] <- if_else(condition = cor_17[1,i] == cor_17[1,j],true = 1,false = 0)
+      cor_17[i,j] <- if_else(condition = cor_17[1,i] == cor_17[1,j] & str_sub(cor_17[1,i],start = -2) != "NA"  ,true = 1,false = 0)
     }
     
   }
@@ -38,7 +42,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.689,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.689,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -47,7 +51,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "DEF" & str_sub(cor_17[1,j],end = 3) == "GLK" ,true = 0.689,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "DEF" & str_sub(cor_17[1,j],end = 3) == "GLK" ,true = 0.689,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -58,7 +62,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.274,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "GLK" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.274,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -67,7 +71,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "GLK" ,true = 0.274,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "GLK" ,true = 0.274,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -78,7 +82,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "DEF" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.368,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "DEF" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.368,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -87,7 +91,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.368,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "DEF" ,true = 0.368,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -98,7 +102,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "FWD" ,true = 0.238,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "MID" & str_sub(cor_17[1,j],end = 3) == "FWD" ,true = 0.238,false = as.numeric(cor_17[i,j])
       )
     }
     
@@ -107,7 +111,7 @@ for (n in 1:last_gw) {
   for (i in 2:626) {
     for (j in 2:626) {
       cor_17[i,j] <- if_else(
-        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],end = 3) == "FWD" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.238,false = as.numeric(cor_17[i,j])
+        condition = str_sub(cor_17[1,i],start = -3) == str_sub(cor_17[1,j],start = -3) & str_sub(cor_17[1,i],start = -2) != "NA" & str_sub(cor_17[1,i],end = 3) == "FWD" & str_sub(cor_17[1,j],end = 3) == "MID" ,true = 0.238,false = as.numeric(cor_17[i,j])
       )
     }
     
