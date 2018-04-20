@@ -195,7 +195,7 @@ for (n in 1:last_gw) {
   
   # Assign name
   name_cor <- paste0("correlation_GW", as.character(n),".xlsx")
-  path_cor <- '../../../input/dynamic_data/season_17/correlation/'
+  path_cor <- '../../../input/dynamic_data/season_17/correlation_raw_numbers/'
   file_cor <- paste0(path_cor, name_cor)
   
   # Write xlsx file
