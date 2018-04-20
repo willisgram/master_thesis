@@ -4,7 +4,7 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 28
+round_stop  <- 5
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
@@ -14,6 +14,9 @@ total_points_round <- data.frame(round = round_start:round_stop,
                                  chip = rep(0,round_stop-round_start+1),
                                  ill_trans = rep(0,round_stop-round_start+1),
                                  ill_trans_test = rep(0,round_stop-round_start+1))
+
+final_team_each_round <- data.frame()
+
 
 for (i in round_start:round_stop) {
   
@@ -96,9 +99,27 @@ for (i in round_start:round_stop) {
   #############
   if(bench_boost_round != 0){
     final_team_round <- inner_join(selected_round, players, by = "index") %>% select(index,PositionsList)
+    points_player <- total_points_chips_player(round = round,final_team = final_team_round,
+                                               captain = captain_round,
+                                               vice_captain = vice_captain_round,
+                                               triple_captain = triple_captain_round,
+                                               penalty = penalty_round,points_round = points_round_17,
+                                               minutes_round = minutes_round_17)
+    final_team_round_temp <- inner_join(final_team_round,points_player,"index")
+    final_team_each_round <- rbind(final_team_each_round,final_team_round_temp)
+    
   } else{
     final_team_round <- final_team_new(round = round,selected = selected_round,starting = starting_round,
                                        substitutes = substitutes_round,minutes_round = minutes_round_17)
+    points_player <- total_points_chips_player(round = round,final_team = final_team_round,
+                                               captain = captain_round,
+                                               vice_captain = vice_captain_round,
+                                               triple_captain = triple_captain_round,
+                                               penalty = penalty_round,points_round = points_round_17,
+                                               minutes_round = minutes_round_17)
+    final_team_round_temp <- inner_join(players,final_team_round,by = "index")
+    final_team_round_temp <- inner_join(final_team_round_temp,points_player,"index")
+    final_team_each_round <- rbind(final_team_each_round,final_team_round_temp)
   }
 
   

@@ -191,6 +191,9 @@ forecasts_improved <- score
 #################
 # Write files
 ##################
+
+write.csv(x = forecasts_improved,file = "load/data_17/data_17_output/forecasts_improved.csv",row.names = F)
+
 library(xlsx) #does not work on mac per now
 
 h<-11

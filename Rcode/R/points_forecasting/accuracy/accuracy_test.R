@@ -15,14 +15,14 @@ actuals <- gather(data = points_realized,key = "round",value = "actuals") %>% se
 ############
 # Accuracy test Argentina
 ############
-
+forecasts_argentina <- read.csv(file = "load/data_17/data_17_output/forecasts_argentina.csv")
 forecasts_argentina_short <- gather(data = forecasts_argentina,key = "round",value = "forecasts") %>% select(forecasts)
 acc_argentina <- accuracy(f = forecasts_argentina_short$forecasts,x = actuals$actuals)
 
 ############
 # Accuracy test Improved
 ############
-
+forecasts_improved <- read.csv(file = "load/data_17/data_17_output/forecasts_improved.csv")
 forecasts_improved_short <- gather(data = forecasts_improved,key = "round",value = "forecasts") %>% select(forecasts)
 acc_improved <- accuracy(f = forecasts_improved_short$forecasts,x = actuals$actuals)
 
