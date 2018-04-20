@@ -172,6 +172,9 @@ forecasts_argentina <- score
 #################
 # Write files
 ##################
+#For accuracy
+write.csv(x = forecasts_argentina,file = "load/data_17/data_17_output/forecasts_argentina.csv",row.names = F)
+
 library(xlsx) #does not work on mac per now
 
 #s <- 1+a #first prediction with data
