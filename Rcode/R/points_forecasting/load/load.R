@@ -20,7 +20,7 @@ points_round_16 <- read.csv(file = "load/data_16/data_16_output/points_round_16.
 minutes_round_16 <- read.csv(file = "load/data_16/data_16_output/minutes_round_16.csv")
 opponent_round_16 <- read.csv(file = "load/data_16/data_16_output/opponent_round_16.csv")
 opponent_round_16_short <- read.csv(file = "load/data_16/data_16_output/opponent_round_16_short.csv")
-h_b_16 <- read.csv(file = "load/data_16/data_16_output/h_b_16.csv")
+h_a_16 <- read.csv(file = "load/data_16/data_16_output/h_a_16_player.csv")
 
 #Completed w/ dummies
 trans_in_round_16 <- read.csv(file = "load/data_16/data_16_output/trans_in_round_16.csv")

@@ -4,7 +4,7 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 5
+round_stop  <- 28
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
@@ -21,7 +21,7 @@ final_team_each_round <- data.frame()
 for (i in round_start:round_stop) {
   
   path <- "../../../output/season_17/forecasting_method/"
-  method <- "average/"
+  method <- "average/no_var_no_gamechips_hor_1_pen_11/"
   folder <- paste0("GW",i,"/")
   round  <- i
   
@@ -159,3 +159,4 @@ for (i in round_start:round_stop) {
 }
 
 total_points_round$points <- as.numeric(total_points_round$points)
+mean(total_points_round$points)

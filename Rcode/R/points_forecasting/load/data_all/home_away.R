@@ -95,10 +95,27 @@ gw_player_num[gw_player_num =="W"] <- NA
 write.csv(x = gw_player_num,file = "load/data_17/data_17_output/gw_player_num.csv",row.names = F)
 
 
+###########
+#h_a_16 new 21.04
+############
+path <- '../../../Data/BK/H.A.16.17.csv'
+h_a_16 <- read.csv2(file = path,header = F )
+h_a_player_16 <- data.frame(matrix(nrow = 625,ncol = 38,"W"))
+team_round_16_short <- team_round_16[,names(team_round_16)!= "index"]
 
+for (j in 1:38) {
+  for (i in 1:625) {
+    for (k in 1:20) {
+      if(team_round_16_short[i,j] == h_a_16[k,1] & !is.na(team_round_16_short[i,j])){
+        index <- k
+        h_a_player_16[i,j] <- h_a_16[index,j+1]
+        break
+      }
+    }
+  }
+}
 
-
-
+write.csv(x = h_a_player_16,file = "load/data_16/data_16_output/h_a_16_player.csv",row.names = F)
 
 
 
