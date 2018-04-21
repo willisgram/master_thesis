@@ -64,7 +64,9 @@ points_round_16 <- points_round_16 %>% mutate(
   round_38 = data_37$PointsLastRound
 )
 
-write.csv(x = points_round_16,file = "data_16/data_16_output/points_round_16.csv",row.names = F)
+points_round_16 <- mutate_all(points_round_16,as.numeric)
+
+write.csv(x = points_round_16,file = "load/data_16/data_16_output/points_round_16.csv",row.names = F)
 
 #Opponents
 opponent_round_16 <- data.frame(index = 1:625)

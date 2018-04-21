@@ -4,21 +4,21 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 28
-
+round_stop  <- 30
+pen <- 4
 penalty_horizon_ov <- data.frame(penalty = rep(0,10),
-                                 horizion = rep(0,10), 
-                                 objevtive_value = rep(0,10),
+                                 horizon = rep(0,10), 
+                                 objective_value = rep(0,10),
                                  mean = rep(0,10))
 
-for(run in 1:9){
+for(run in 1:1){
   
   
   
   
   
   hor <- 1
-  pen <- 4
+  
   var <- 0
   gamechips <-0
   
@@ -37,7 +37,7 @@ for(run in 1:9){
   
   for (i in round_start:round_stop) {
     
-    path <- "../../../output/season_17/forecasting_method/"
+    path <- "../../../output/season_16/forecasting_method/"
     method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"/")
     folder <- paste0("GW",i,"/")
     round  <- i
@@ -120,20 +120,20 @@ for(run in 1:9){
                                                  captain = captain_round,
                                                  vice_captain = vice_captain_round,
                                                  triple_captain = triple_captain_round,
-                                                 penalty = penalty_round,points_round = points_round_17,
-                                                 minutes_round = minutes_round_17)
+                                                 penalty = penalty_round,points_round = points_round_16,
+                                                 minutes_round = minutes_round_16)
       final_team_round_temp <- inner_join(final_team_round,points_player,"index")
       final_team_each_round <- rbind(final_team_each_round,final_team_round_temp)
       
     } else{
       final_team_round <- final_team_new(round = round,selected = selected_round,starting = starting_round,
-                                         substitutes = substitutes_round,minutes_round = minutes_round_17)
+                                         substitutes = substitutes_round,minutes_round = minutes_round_16)
       points_player <- total_points_chips_player(round = round,final_team = final_team_round,
                                                  captain = captain_round,
                                                  vice_captain = vice_captain_round,
                                                  triple_captain = triple_captain_round,
-                                                 penalty = penalty_round,points_round = points_round_17,
-                                                 minutes_round = minutes_round_17)
+                                                 penalty = penalty_round,points_round = points_round_16,
+                                                 minutes_round = minutes_round_16)
       final_team_round_temp <- inner_join(players,final_team_round,by = "index")
       final_team_round_temp <- inner_join(final_team_round_temp,points_player,"index")
       final_team_each_round <- rbind(final_team_each_round,final_team_round_temp)
@@ -145,16 +145,16 @@ for(run in 1:9){
     total_points_round$points[i]  <- total_points_chips(round = round,final_team = final_team_round,
                                                         captain = captain_round,
                                                         vice_captain = vice_captain_round,triple_captain = triple_captain_round,penalty = penalty_round,
-                                                        points_round = points_round_17,minutes_round = minutes_round_17)
+                                                        points_round = points_round_16,minutes_round = minutes_round_16)
     
     total_points_round$points_brutto[i]  <- total_points_chips(round = round,final_team = final_team_round,
                                                                captain = captain_round,
                                                                vice_captain = vice_captain_round,
                                                                triple_captain = triple_captain_round,
                                                                penalty = 0,
-                                                               points_round = points_round_17,minutes_round = minutes_round_17)
+                                                               points_round = points_round_16,minutes_round = minutes_round_16)
     
-    cost_team <- inner_join(selected_round,cost_round_17,"index") %>% select(i+1)
+    cost_team <- inner_join(selected_round,cost_round_16,"index") %>% select(i+1)
     total_points_round$cost[i] <- sum(cost_team)
     total_points_round$rem_bud[i] <- rem_bud$remaining_budget
     total_points_round$ill_trans[i] <- ill_trans_round
@@ -185,8 +185,8 @@ for(run in 1:9){
   penalty_horizon_ov$mean[run] <- mean(total_points_round$points)
   
   
-  hor <- hor+1
-  pen <- 4
+  #hor <- hor+1
+  pen <- pen +1
   var <- 0
   gamechips <-0
   

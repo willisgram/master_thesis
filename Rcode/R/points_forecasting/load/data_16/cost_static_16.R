@@ -12,7 +12,7 @@ library(xlsx)
 #given input
 h <- 11
 
-for(week_for in 5:37){
+for(week_for in 5:39){
   
   cost_table <- cost_round_16 %>% select(index)
   cost_table[2] <- cost_round_16[(week_for-4)+1]
@@ -24,7 +24,7 @@ for(week_for in 5:37){
   
   #Costs
   name_cost <- paste0("player_cost_GW", as.character(week_for-4),".xlsx")
-  path_cost <- '../../../input/static_data/cost/'
+  path_cost <- '../../../input/static_data/cost/season_16/'
   file_cost <- paste0(path_cost, name_cost)
   
   #assign(x = name_for,value = predictions_table)

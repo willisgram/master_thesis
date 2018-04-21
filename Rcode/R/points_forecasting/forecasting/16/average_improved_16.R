@@ -50,7 +50,6 @@ elo_team <- data.matrix(elo_team)
 elo_player_history <- elo_opponent/elo_team
 
 # Adjust historic performance with Elo rating of opponent
-points_round_16 <- mutate_all(points_round_16,as.numeric)
 points_round_16_elo <- points_round_16[,2:(last_gw+1)]*elo_player_history
 index <- 1:625
 points_round_16_elo <- cbind(index,points_round_16_elo)
