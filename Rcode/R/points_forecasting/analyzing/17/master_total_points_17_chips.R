@@ -5,6 +5,10 @@ library(tidyverse)
 
 round_start <- 1
 round_stop  <- 28
+hor <- 1
+pen <- 11
+var <- 0
+gamechips <-0
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
@@ -16,12 +20,15 @@ total_points_round <- data.frame(round = round_start:round_stop,
                                  ill_trans_test = rep(0,round_stop-round_start+1))
 
 final_team_each_round <- data.frame()
-
+penalty_horizon_ov <- data.frame(penalty = rep(0,10),
+                                 horizion = rep(0,10), 
+                                 objevtive_value = rep(0,10),
+                                 mean = rep(0,10))
 
 for (i in round_start:round_stop) {
   
   path <- "../../../output/season_17/forecasting_method/"
-  method <- "average/no_var_no_gamechips_hor_1_pen_11/"
+  method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"/")
   folder <- paste0("GW",i,"/")
   round  <- i
   
@@ -160,3 +167,16 @@ for (i in round_start:round_stop) {
 
 total_points_round$points <- as.numeric(total_points_round$points)
 mean(total_points_round$points)
+
+run <- 1
+penalty_horizon_ov$penalty[run] <- pen
+penalty_horizon_ov$horizon[run] <- hor
+penalty_horizon_ov$objective_value[run] <- sum(total_points_round$points)
+penalty_horizon_ov$mean[run] <- sum(total_points_round$points)
+
+
+
+
+
+
+

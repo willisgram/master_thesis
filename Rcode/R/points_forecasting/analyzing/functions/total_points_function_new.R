@@ -95,6 +95,10 @@ final_team_new <- function(round,selected,starting,substitutes,minutes_round){
           d <- d_org
           m <- m_org
           a <- a_org
+          if(k == length(playing_subs_index)){
+            not_playing_starting_index <- not_playing_starting_index[-j]
+          }
+          
         }
       }
     }
