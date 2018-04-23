@@ -5,7 +5,7 @@ library(tidyverse)
 
 
 last_gw <- 29
-a <- 3
+a <- 2
 
 #########
 # Average w/ELO
