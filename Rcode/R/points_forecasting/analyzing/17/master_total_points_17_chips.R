@@ -8,6 +8,7 @@ round_stop  <- 29
 hor <- 2
 pen <- 18
 var <- 0
+f_hor <- 4
 gamechips <-0
 
 total_points_round <- data.frame(round = round_start:round_stop,
@@ -28,7 +29,7 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,10),
 for (i in round_start:round_stop) {
   
   path <- "../../../output/season_17/forecasting_method/"
-  method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"/")
+  method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"_forecast_hor_",f_hor,"/")
   folder <- paste0("GW",i,"/")
   round  <- i
   

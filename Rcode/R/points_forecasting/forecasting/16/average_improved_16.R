@@ -55,14 +55,17 @@ index <- 1:625
 points_round_16_elo <- cbind(index,points_round_16_elo)
 
 # Calculate average Elo adjusted performance
-points_average_a_16 <- data.frame(index = 1:625,round_1 = rep(NA,625),round_2 = rep(NA,625),round_3 = rep(NA,625))
+points_average_a_16 <- data.frame(index = 1:625)
+points_average_a_16[,2:(a+1)] <- rep(NA,625)
+colnames(points_average_a_16)[2:(a+1)] <- paste0("round_",1:a)
+#points_average_a_16 <- data.frame(index = 1:625,round_1 = rep(NA,625),round_2 = rep(NA,625),round_3 = rep(NA,625))
 
 for(i in (a+1):last_gw){
 
     points_average_a_16[,i+1] <- rowMeans(points_round_16_elo[,((i+1)-a):(i)])
     
 }
-colnames(points_average_a_16)[2:(last_gw+1)] <- paste0("round_",1:last_gw)
+colnames(points_average_a_16)[(a+1):(last_gw+1)] <- paste0("round_",a:last_gw)
 #########
 
 ########
@@ -170,13 +173,13 @@ score <- score*streak_matrix[,1:last_gw]
 ############
 
 #For accuracy tests
-#forecasts_improved <- score
+forecasts_improved <- score
 
 #################
 # Write files
 ##################
 
-#write.csv(x = forecasts_improved,file = "load/data_17/data_17_output/forecasts_improved.csv",row.names = F)
+write.csv(x = forecasts_improved,file = paste0("load/data_16/data_16_output/forecasts_improved_2016_hor_",a,".csv"),row.names = F)
 
 library(xlsx) #does not work on mac per now
 
@@ -184,7 +187,7 @@ h<-11
 elo_player_future <- elo_team/elo_opponent
 # Add line adjusting for double gameweek elo (?)
 
-for(week_for in 4:last_gw){
+for(week_for in (a+1):last_gw){
   
   predictions_table_average <- score %>% select(week_for)
   predictions_table_average[,2:(h)] <- predictions_table_average[,1]
@@ -196,8 +199,8 @@ for(week_for in 4:last_gw){
   
   # Assign name
   #Forecasts
-  name_for_avg <- paste0("forecast_point_GW", as.character(week_for-3),".xlsx") #adjust for missing 3
-  path_for_avg <- '../../../input/dynamic_data/season_16/forecasting_method/average/'
+  name_for_avg <- paste0("forecast_point_GW", as.character(week_for-(a)),".xlsx") #adjust for missing 3
+  path_for_avg <- paste0('../../../input/dynamic_data/season_16/forecasting_method/average/improved_hor_',a,'/')
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
   #assign(x = name_for,value = predictions_table_average)

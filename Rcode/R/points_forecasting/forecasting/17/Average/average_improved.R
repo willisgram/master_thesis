@@ -5,7 +5,7 @@ library(tidyverse)
 
 
 last_gw <- 29
-a <- 2
+a <- 4
 
 #########
 # Average w/ELO
@@ -192,7 +192,7 @@ forecasts_improved <- score
 # Write files
 ##################
 
-write.csv(x = forecasts_improved,file = "load/data_17/data_17_output/forecasts_improved.csv",row.names = F)
+write.csv(x = forecasts_improved,file = "load/data_17/data_17_output/forecasts_improved_hor_4.csv",row.names = F)
 
 library(xlsx) #does not work on mac per now
 
@@ -213,7 +213,7 @@ for(week_for in 1:last_gw){
   # Assign name
   #Forecasts
   name_for_avg <- paste0("forecast_point_GW", as.character(week_for),".xlsx")
-  path_for_avg <- '../../../input/dynamic_data/season_17/forecasting_method/average/improved/'
+  path_for_avg <- '../../../input/dynamic_data/season_17/forecasting_method/average/improved_hor_4/'
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
   #assign(x = name_for,value = predictions_table_average)
