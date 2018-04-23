@@ -2,6 +2,18 @@
 # Function to calculate total points for 1 round
 #####################
 
+penalty <- function(ill_trans,wildcard,free_hit){
+  if(wildcard != 0){
+    penalty <- 0
+    return(penalty)
+  } else if(free_hit != 0){
+    penalty <- 0
+    return(penalty)
+  } else{
+    penalty <- ill_trans*4
+    return(penalty)
+  }
+}
 
 
 final_team_new <- function(round,selected,starting,substitutes,minutes_round){

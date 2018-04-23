@@ -4,9 +4,9 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 28
-hor <- 1
-pen <- 11
+round_stop  <- 29
+hor <- 2
+pen <- 18
 var <- 0
 gamechips <-0
 
