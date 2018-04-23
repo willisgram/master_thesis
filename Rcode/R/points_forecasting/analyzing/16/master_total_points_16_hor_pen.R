@@ -4,21 +4,22 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 30
+round_stop  <- 35
 pen <- 4
+hor <- 1
 penalty_horizon_ov <- data.frame(penalty = rep(0,10),
                                  horizon = rep(0,10), 
                                  objective_value = rep(0,10),
                                  mean = rep(0,10))
 
-for(run in 1:1){
+for(run in 1:15){
   
   
   
   
   
-  hor <- 1
-  
+  #hor <- 1
+  pen <-4
   var <- 0
   gamechips <-0
   
@@ -185,8 +186,8 @@ for(run in 1:1){
   penalty_horizon_ov$mean[run] <- mean(total_points_round$points)
   
   
-  #hor <- hor+1
-  pen <- pen +1
+  hor <- hor+1
+  #pen <- pen +1
   var <- 0
   gamechips <-0
   
