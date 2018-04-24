@@ -8,7 +8,7 @@ round_stop  <- 29
 hor <- 2
 pen <- 18
 var <- 0
-f_hor <- 4
+f_hor <- 5
 gamechips <-0
 
 total_points_round <- data.frame(round = round_start:round_stop,
