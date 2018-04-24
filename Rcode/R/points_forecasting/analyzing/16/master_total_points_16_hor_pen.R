@@ -3,14 +3,15 @@
 #########################
 library(tidyverse)
 
-round_start <- 4
+round_start <- 6
 round_stop  <- 38
-pen_min <- 4
-pen_max <- 20
-hor_min <- 1
-hor_max <- 10
+pen_min <- 18
+pen_max <- 18
+hor_min <- 2
+hor_max <- 2
 runs <- (pen_max-pen_min+1)*(hor_max-hor_min+1)
 run <- 1
+f_hor <- round_start-1
 penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
                                  horizon = rep(0,runs), 
                                  objective_value = rep(0,runs),
@@ -45,8 +46,8 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
       for (i in round_start:round_stop) {
         
         path <- "../../../output/season_16/forecasting_method/"
-        method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"/")
-        folder <- paste0("GW",i-3,"/")
+        method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"_forecast_hor_",f_hor,"/")
+        folder <- paste0("GW",i-f_hor,"/")
         round  <- i #round refer to Round, i is index. The same if both begin in 1
         
         #Captain
@@ -80,14 +81,11 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
         substitutes_round <- substitutes %>% mutate(index = as.integer(substitutes)) %>% select(index)
         
         #Illegal transfers
-        if(i != 4){
-          file_ill_trans <- paste0(path,method,folder,"number_illegal_transfers.csv")
-          ill_trans <- read.csv(file_ill_trans,header = F)
-          colnames(ill_trans)[1] <- "ill_trans"
-          ill_trans_round <- ill_trans %>% mutate(index = as.integer(ill_trans)) %>% select(index)  
-        } else{
-          ill_trans_round <- 0
-        }
+        file_ill_trans <- paste0(path,method,folder,"number_illegal_transfers.csv")
+        ill_trans <- read.csv(file_ill_trans,header = F)
+        colnames(ill_trans)[1] <- "ill_trans"
+        ill_trans_round <- ill_trans %>% mutate(index = as.integer(ill_trans)) %>% select(index)  
+        
         
         
         #Remaining
@@ -149,12 +147,12 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
         
         penalty_round <- penalty(ill_trans = ill_trans_round,wildcard = wildcard_round,free_hit = free_hit_round )
         
-        total_points_round$points[i-3]  <- total_points_chips(round = round,final_team = final_team_round,
+        total_points_round$points[i-f_hor]  <- total_points_chips(round = round,final_team = final_team_round,
                                                               captain = captain_round,
                                                               vice_captain = vice_captain_round,triple_captain = triple_captain_round,penalty = penalty_round,
                                                               points_round = points_round_16,minutes_round = minutes_round_16)
         
-        total_points_round$points_brutto[i-3]  <- total_points_chips(round = round,final_team = final_team_round,
+        total_points_round$points_brutto[i-f_hor]  <- total_points_chips(round = round,final_team = final_team_round,
                                                                      captain = captain_round,
                                                                      vice_captain = vice_captain_round,
                                                                      triple_captain = triple_captain_round,
@@ -162,20 +160,20 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
                                                                      points_round = points_round_16,minutes_round = minutes_round_16)
         
         cost_team <- inner_join(selected_round,cost_round_16,"index") %>% select(round+1)
-        total_points_round$cost[i-3] <- sum(cost_team)
-        total_points_round$rem_bud[i-3] <- rem_bud$remaining_budget
-        total_points_round$ill_trans[i-3] <- ill_trans_round
+        total_points_round$cost[i-f_hor] <- sum(cost_team)
+        total_points_round$rem_bud[i-f_hor] <- rem_bud$remaining_budget
+        total_points_round$ill_trans[i-f_hor] <- ill_trans_round
         
         #ill trans test
         if(i != 1){
           
-          total_points_round$ill_trans_test[i-3] <- 14 - dim(inner_join(selected_round,selected_prev,'index'))[1]
+          total_points_round$ill_trans_test[i-f_hor] <- 14 - dim(inner_join(selected_round,selected_prev,'index'))[1]
         }
         
         
         
         if(wildcard_round != 0 | bench_boost_round != 0 | free_hit_round != 0 | triple_captain_round != 0){
-          total_points_round$chip[i-3] <- 1
+          total_points_round$chip[i-f_hor] <- 1
         }
         
         selected_prev <- selected_round
@@ -202,6 +200,7 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
   }
   
 #}
+
 
 
 

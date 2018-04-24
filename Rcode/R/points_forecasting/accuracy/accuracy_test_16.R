@@ -33,6 +33,40 @@ forecasts_improved_4 <- read.csv(file = "load/data_16/data_16_output/forecasts_i
 forecasts_improved_short_4 <- gather(data = forecasts_improved_4,key = "round",value = "forecasts") %>% select(forecasts)
 acc_improved_4 <- accuracy(f = forecasts_improved_short_4$forecasts,x = actuals$actuals)
 
+############
+# Accuracy test Improved a = 5
+############
+forecasts_improved_5 <- read.csv(file = "load/data_16/data_16_output/forecasts_improved_2016_hor_5.csv")
+forecasts_improved_short_5 <- gather(data = forecasts_improved_5,key = "round",value = "forecasts") %>% select(forecasts)
+acc_improved_5 <- accuracy(f = forecasts_improved_short_5$forecasts,x = actuals$actuals)
+
+############
+# Accuracy test Improved a = 6
+############
+forecasts_improved_6 <- read.csv(file = "load/data_16/data_16_output/forecasts_improved_2016_hor_6.csv")
+forecasts_improved_short_6 <- gather(data = forecasts_improved_6,key = "round",value = "forecasts") %>% select(forecasts)
+acc_improved_6 <- accuracy(f = forecasts_improved_short_6$forecasts,x = actuals$actuals)
+
+############
+# Accuracy test Improved a = 7
+############
+forecasts_improved_7 <- read.csv(file = "load/data_16/data_16_output/forecasts_improved_2016_hor_7.csv")
+forecasts_improved_short_7 <- gather(data = forecasts_improved_7,key = "round",value = "forecasts") %>% select(forecasts)
+acc_improved_7 <- accuracy(f = forecasts_improved_short_7$forecasts,x = actuals$actuals)
+
+############
+# Accuracy test Improved a = 8
+############
+forecasts_improved_8 <- read.csv(file = "load/data_16/data_16_output/forecasts_improved_2016_hor_8.csv")
+forecasts_improved_short_8 <- gather(data = forecasts_improved_8,key = "round",value = "forecasts") %>% select(forecasts)
+acc_improved_8 <- accuracy(f = forecasts_improved_short_8$forecasts,x = actuals$actuals)
+
+############
+# Accuracy test Improved a = 10
+############
+forecasts_improved_10 <- read.csv(file = "load/data_16/data_16_output/forecasts_improved_2016_hor_10.csv")
+forecasts_improved_short_10 <- gather(data = forecasts_improved_10,key = "round",value = "forecasts") %>% select(forecasts)
+acc_improved_10 <- accuracy(f = forecasts_improved_short_10$forecasts,x = actuals$actuals)
 
 ############
 # Regression no update

@@ -5,7 +5,7 @@ library(tidyverse)
 
 
 last_gw <- 29
-a <- 4
+a <- 8
 
 #########
 # Average w/ELO
@@ -180,6 +180,7 @@ score <- score*gw_player_num[,1:last_gw]
 
 # injuries
 #############
+injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
 injuries_17 <- data.matrix(injuries_17)
 injuries_17 <- injuries_17[,2:(last_gw+1)]
 score <- score*injuries_17
@@ -192,7 +193,7 @@ forecasts_improved <- score
 # Write files
 ##################
 
-write.csv(x = forecasts_improved,file = "load/data_17/data_17_output/forecasts_improved_hor_4.csv",row.names = F)
+write.csv(x = forecasts_improved,file = paste0("load/data_17/data_17_output/forecasts_improved_hor_",a,".csv"),row.names = F)
 
 library(xlsx) #does not work on mac per now
 
@@ -213,7 +214,7 @@ for(week_for in 1:last_gw){
   # Assign name
   #Forecasts
   name_for_avg <- paste0("forecast_point_GW", as.character(week_for),".xlsx")
-  path_for_avg <- '../../../input/dynamic_data/season_17/forecasting_method/average/improved_hor_4/'
+  path_for_avg <- paste0('../../../input/dynamic_data/season_17/forecasting_method/average/improved_hor_',a,'/')
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
   #assign(x = name_for,value = predictions_table_average)
