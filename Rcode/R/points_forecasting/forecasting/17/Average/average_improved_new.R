@@ -4,8 +4,8 @@
 library(tidyverse)
 
 
-last_gw <- 29
-a <- 2
+last_gw <- 35
+a <- 7
 
 #########
 # Average w/ELO
@@ -102,73 +102,7 @@ score <- points_average_a_17[,2:(last_gw+1)]*h_a_17_num[,1:(last_gw)]
 ########
 # Player Point Streak
 ########
-X <- 4 #stricly higher
-Y <- 2 #strictly less
-
-streak_matrix <- data.frame(matrix(nrow = 625,ncol = 40,1))
-points_17 <- points_round_17[,names(points_round_17) != "index"]
-
-## Positive streak
-for (i in 1:625) {
-  for (j in 2:last_gw) {
-    if(j>5){
-      if(all(points_17[i,(j-5):(j-1)]>X) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-5):(j-1)]))){
-        streak_matrix[i,j] <- 1.05
-      }
-    }
-    if(j>4){
-      if(all(points_17[i,(j-4):(j-1)]>X) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-4):(j-1)]))){
-        streak_matrix[i,j] <- 1.04
-      }
-    }
-    if(j>3){
-      if(all(points_17[i,(j-3):(j-1)]>X) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-3):(j-1)]))){
-        streak_matrix[i,j] <- 1.03
-      }
-    }
-    if(j>2){
-      if(all(points_17[i,(j-2):(j-1)]>X) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-2):(j-1)]))){
-        streak_matrix[i,j] <- 1.02
-      }
-    }
-    if(j>1){
-      if(all(points_17[i,(j-1):(j-1)]>X) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-1):(j-1)]))){
-        streak_matrix[i,j] <- 1.01
-      }
-    }
-  }
-}
-
-## Negative streak
-for (i in 1:625) {
-  for (j in 2:last_gw) {
-    if(j>5){
-      if(all(points_17[i,(j-5):(j-1)]<Y) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-5):(j-1)]))){
-        streak_matrix[i,j] <- 0.95
-      }
-    }
-    if(j>4){
-      if(all(points_17[i,(j-4):(j-1)]<Y) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-4):(j-1)]))){
-        streak_matrix[i,j] <- 0.96
-      }
-    }
-    if(j>3){
-      if(all(points_17[i,(j-3):(j-1)]<Y) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-3):(j-1)]))){
-        streak_matrix[i,j] <- 0.97
-      }
-    }
-    if(j>2){
-      if(all(points_17[i,(j-2):(j-1)]<Y) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-2):(j-1)]))){
-        streak_matrix[i,j] <- 0.98
-      }
-    }
-    if(j>1){
-      if(all(points_17[i,(j-1):(j-1)]<Y) & streak_matrix[i,j] == 1 & all(!is.na(points_17[i,(j-1):(j-1)]))){
-        streak_matrix[i,j] <- 0.99
-      }
-    }
-  }
-}
+streak_matrix <- read.csv(file = "load/data_17/data_17_output/streak_matrix.csv")
 
 score <- score*streak_matrix[,1:last_gw]
 
@@ -182,6 +116,7 @@ score <- score*gw_player_num[,1:last_gw]
 
 # injuries
 #############
+injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
 injuries_17 <- data.matrix(injuries_17)
 injuries_17 <- injuries_17[,2:(last_gw+1)]
 score <- score*injuries_17
@@ -194,9 +129,11 @@ forecasts_improved <- score
 # Write files
 ##################
 
-write.csv(x = forecasts_improved,file = "load/data_17/data_17_output/forecasts_improved_hor_2.csv",row.names = F)
+write.csv(x = forecasts_improved,file = paste0("load/data_17/data_17_output/forecasts_improved_2017_hor_",a,".csv"),row.names = F)
 
 library(xlsx) #does not work on mac per now
+path <- paste0('../../../input/dynamic_data/season_17/forecasting_method/average/improved_hor_',a,'/')
+dir.create(path = path )
 
 h<-11
 elo_player_future <- elo_team/elo_opponent
@@ -215,7 +152,7 @@ for(week_for in 1:last_gw){
   # Assign name
   #Forecasts
   name_for_avg <- paste0("forecast_point_GW", as.character(week_for),".xlsx")
-  path_for_avg <- '../../../input/dynamic_data/season_17/forecasting_method/average/improved_hor_2/'
+  path_for_avg <- path
   file_for_avg <- paste0(path_for_avg, name_for_avg)
   
   #assign(x = name_for,value = predictions_table_average)

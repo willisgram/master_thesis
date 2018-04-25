@@ -168,6 +168,8 @@ for (i in 1:625) {
   }
 }
 
+write.csv(x = streak_matrix,file = "load/data_17/data_17_output/streak_matrix.csv",row.names = F)
+
 score <- score*streak_matrix[,1:last_gw]
 
 #########

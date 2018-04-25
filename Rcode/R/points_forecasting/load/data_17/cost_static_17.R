@@ -7,12 +7,12 @@ library(xlsx)
 
 # Ready to use, only folder missing
 
-
+last_gw <- 35
 
 #given input
 h <- 11
 
-for(week_for in 1:29){
+for(week_for in 1:last_gw){
   
   cost_table <- cost_round_17 %>% select(index)
   cost_table[2] <- cost_round_17[week_for+1]

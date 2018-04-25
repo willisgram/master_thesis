@@ -5,7 +5,7 @@ library(tidyverse)
 library(xlsx)
 options(stringsAsFactors = F)
 
-last_gw <- 30
+last_gw <- 35
 
 for (n in 1:last_gw) {
   
