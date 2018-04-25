@@ -20,7 +20,7 @@ injuries_17 <- injuries_17[,names(injuries_17) != "Surname"]
 injuries_17 <- injuries_17[,names(injuries_17) != "FirstName_1"]
 injuries_17 <- injuries_17[,names(injuries_17) != "Surname_1"]
 
-last_gw <- 29
+last_gw <- 35
 injuries_17 <- injuries_17[,1:(last_gw+1)]
 injuries_17 <- mutate_all(injuries_17,as.numeric)
 
