@@ -10,9 +10,11 @@ library(tidyverse)
 library(xlsx) #cost
 options(stringsAsFactors = F)
 folder <- "input/"
+last_gw<-35
+
 points_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:29){
+for( i in 1:last_gw){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -44,7 +46,7 @@ write.csv(x = points_round_17,file = "load/data_17/data_17_output/points_round_1
 #Opponents
 opponent_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:28){
+for( i in 0:(last_gw-1)){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -99,7 +101,7 @@ write.csv(x = opponent_round_17_short,file = "load/data_17/data_17_output/oppone
 #Cost
 cost_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:28){
+for( i in 0:(last_gw-1)){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -140,7 +142,7 @@ write.xlsx(cost_round_17, file_for,row.names = F)
 #Team
 team_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:28){
+for( i in 0:(last_gw-1)){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -166,15 +168,15 @@ for( i in 0:28){
   
 }
 
-team_round_17[,31:39] <- team_round_17[,30]
-colnames(team_round_17)[31:39] <- paste0("round_",30:38) 
+#team_round_17[,31:39] <- team_round_17[,30]
+#colnames(team_round_17)[31:39] <- paste0("round_",30:38) 
 
 write.csv(x = team_round_17,file = "load/data_17/data_17_output/team_round_17.csv",row.names = F)
 
 #Position
 pos_round_17 <- data.frame(index = 1:625)
 
-for( i in 0:28){
+for( i in 0:(last_gw-1)){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -205,7 +207,7 @@ write.csv(x = pos_round_17,file = "load/data_17/data_17_output/pos_round_17.csv"
 #Transfers in
 trans_in_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:29){
+for( i in 1:last_gw){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -236,7 +238,7 @@ write.csv(x = trans_in_round_17,file = "load/data_17/data_17_output/trans_in_rou
 #Transfers out
 trans_out_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:29){
+for( i in 1:last_gw){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -267,7 +269,7 @@ write.csv(x = trans_out_round_17,file = "load/data_17/data_17_output/trans_out_r
 # Total minutes played
 tot_min_round_17 <- data.frame(index = 1:625)
 
-for( i in 1:29){
+for( i in 1:last_gw){
   year     <- "17"
   week   <- as.character(i)
   sheet  <- paste0("FPL",year,"-GW",week,".csv")
@@ -297,7 +299,7 @@ for( i in 1:29){
 
 minutes_round_17 <- data.frame(index = 1:625)
 
-for (i in 1:29) {
+for (i in 1:last_gw) {
   
   if(i == 1){
     
