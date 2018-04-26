@@ -13,9 +13,9 @@ a <- 7
 
 path <- '../../../Data/BK/ELO17-18_score.csv'
 elo <- read.csv2(path)
-elo_team <- data.frame(matrix(nrow = 625,ncol = last_gw,10))
+elo_team <- data.frame(matrix(nrow = 625,ncol = last_gw,1))
 team_round_17_short <- team_round_17[,names(team_round_17)!= "index"]
-elo_opponent <- data.frame(matrix(nrow = 625,ncol = last_gw,10))
+elo_opponent <- data.frame(matrix(nrow = 625,ncol = last_gw,1))
 opponent_round_17_short <- opponent_round_17_short[,names(opponent_round_17_short) != "index"]
 
 # Fill Elo rating of team
@@ -31,6 +31,8 @@ for (j in 1:last_gw) {
   }
 }
 
+write.csv(x = elo_team,file = "load/data_17/data_17_output/elo_team_17.csv",row.names = F)
+
 # Fill Elo rating of opponents
 for (j in 1:last_gw) {
   for (i in 1:625) {
@@ -43,6 +45,8 @@ for (j in 1:last_gw) {
     }
   }
 }
+
+write.csv(x = elo_opponent,file = "load/data_17/data_17_output/elo_opponent_17.csv",row.names = F)
 
 # Create Elo adjustment factor
 elo_opponent <- data.matrix(elo_opponent)

@@ -7,7 +7,7 @@ library(tidyverse)
 # Not using forecast as new previous
 
 #given input
-k <- 5 #(uses 5 previous matches)
+k <- 5 #(use 5 previous matches)
 # week_for <- 15
 
 options(stringsAsFactors = F)
@@ -160,6 +160,7 @@ options(stringsAsFactors = F)
 #Create regressors
   regressors_16 <- cbind(points_round_k_16,opponent_round_k_16,team_round_k_16,cost_round_k_16,
                          pos_round_k_16,trans_in_round_k_16,trans_out_round_k_16)
+  regressors_16 <- regressors_16[,names(regressors_16)!= "index"]
   #regressors_16$index <- as.factor(regressors_16$index)
 
   #regressors_16 <- regressors_16 %>% na.omit()
