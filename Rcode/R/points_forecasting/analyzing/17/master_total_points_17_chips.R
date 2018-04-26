@@ -4,7 +4,7 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 29
+round_stop  <- 35
 hor <- 2
 pen <- 18
 var <- 0
@@ -29,7 +29,7 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,10),
 for (i in round_start:round_stop) {
   
   path <- "../../../output/season_17/forecasting_method/"
-  method <- paste0("average/var_",var,"_gamechips_",0,"_hor_",hor,"_pen_",pen,"_forecast_hor_",f_hor,"/")
+  method <- paste0("average/var_",var,"_gamechips_strategy_",strategy,"_hor_",hor,"_pen_",pen,"_forecast_hor_",f_hor,"/")
   folder <- paste0("GW",i,"/")
   round  <- i
   

@@ -54,6 +54,8 @@ h_a_17_double <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_a_17_player.csv")
 injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
 streak_matrix <- read.csv(file = "load/data_17/data_17_output/streak_matrix.csv")
+elo_team <- read.csv(file = "load/data_17/data_17_output/elo_team_17.csv")
+elo_opponent <- read.csv(file = "load/data_17/data_17_output/elo_opponent_17.csv")
 
 #1-40
 gw_player_num <- read.csv(file = "load/data_17/data_17_output/gw_player_num.csv")
