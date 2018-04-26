@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1524669693088.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "485785958",
+    "id" : "BF828D53",
+    "lastKnownWriteTime" : 1524498424,
+    "last_content_update" : 1524498424,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/analyzing/functions/total_points_function_new.R",
+    "project_path" : "analyzing/functions/total_points_function_new.R",
+    "properties" : {
+        "cursorPosition" : "221,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

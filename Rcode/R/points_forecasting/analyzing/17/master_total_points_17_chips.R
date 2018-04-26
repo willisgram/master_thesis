@@ -4,12 +4,12 @@
 library(tidyverse)
 
 round_start <- 1
-round_stop  <- 35
+round_stop  <- 29
 hor <- 2
 pen <- 18
 var <- 0
-f_hor <- 7
-strategy <- 1
+f_hor <- 5
+gamechips <-0
 
 total_points_round <- data.frame(round = round_start:round_stop,
                                  cost = rep(0,round_stop-round_start+1),
@@ -29,7 +29,7 @@ penalty_horizon_ov <- data.frame(penalty = rep(0,10),
 for (i in round_start:round_stop) {
   
   path <- "../../../output/season_17/forecasting_method/"
-  method <- paste0("average/var_",var,"_gamechips_strategy_",strategy,"_hor_",hor,"_pen_",pen,"_forecast_hor_",f_hor,"/")
+  method <- paste0("average/var_",var,"_gamechips_",gamechips,"_hor_",hor,"_pen_",pen,"_forecast_hor_",f_hor,"/")
   folder <- paste0("GW",i,"/")
   round  <- i
   
@@ -113,8 +113,7 @@ for (i in round_start:round_stop) {
                                                triple_captain = triple_captain_round,
                                                penalty = penalty_round,points_round = points_round_17,
                                                minutes_round = minutes_round_17)
-    final_team_round_temp <- inner_join(players,final_team_round,by = "index")
-    final_team_round_temp <- inner_join(final_team_round_temp,points_player,"index")
+    final_team_round_temp <- inner_join(final_team_round,points_player,"index")
     final_team_each_round <- rbind(final_team_each_round,final_team_round_temp)
     
   } else{

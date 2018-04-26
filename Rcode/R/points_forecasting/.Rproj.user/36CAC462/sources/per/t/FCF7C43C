@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1524669665924.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "560344653",
+    "id" : "FCF7C43C",
+    "lastKnownWriteTime" : 1524669366,
+    "last_content_update" : 1524669366,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/load/load.R",
+    "project_path" : "load/load.R",
+    "properties" : {
+        "cursorPosition" : "2,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
