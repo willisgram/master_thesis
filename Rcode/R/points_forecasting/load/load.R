@@ -33,6 +33,23 @@ opponents_16 <- read.csv2(path)
 opponents_16 <- opponents_16 %>% mutate_all(.funs = toupper)
 ######################
 
+#Regressors 5-37 (act as if 38 does not exist)
+tot_points_round_16 <- read.csv(file = "load/data_16/data_16_output/tot_points_round_16.csv")
+last_season_p_round_16 <- read.csv(file = "load/data_16/data_16_output/last_season_p_round_16.csv")
+last_season_tot_p_round_16 <- read.csv(file = "load/data_16/data_16_output/last_season_tot_p_round_16.csv")
+y_cards_round_16 <- read.csv(file = "load/data_16/data_16_output/y_cards_round_16.csv")
+goals_con_round_16 <- read.csv(file = "load/data_16/data_16_output/goals_con_round_16.csv")
+saves_round_16 <- read.csv(file = "load/data_16/data_16_output/saves_round_16.csv")
+goals_round_16 <- read.csv(file = "load/data_16/data_16_output/goals_round_16.csv")
+pen_miss_round_16 <- read.csv(file = "load/data_16/data_16_output/pen_miss_round_16.csv")
+pen_save_round_16 <- read.csv(file = "load/data_16/data_16_output/pen_save_round_16.csv")
+clean_sheet_round_16 <- read.csv(file = "load/data_16/data_16_output/clean_sheet_round_16.csv")
+assists_round_16 <- read.csv(file = "load/data_16/data_16_output/assists_round_16.csv")
+own_goals_round_16 <- read.csv(file = "load/data_16/data_16_output/own_goals_round_16.csv")
+dream_team_round_16 <- read.csv(file = "load/data_16/data_16_output/dream_team_round_16.csv")
+r_cards_round_16 <- read.csv(file = "load/data_16/data_16_output/r_cards_round_16.csv")
+BPS_round_16 <- read.csv(file = "load/data_16/data_16_output/BPS_round_16.csv")
+
 ###################
 # Regressors 2017
 ###################
@@ -48,12 +65,29 @@ pos_round_17 <- read.csv(file = "load/data_17/data_17_output/pos_round_17.csv")
 trans_in_round_17 <- read.csv(file = "load/data_17/data_17_output/trans_in_round_17.csv")
 trans_out_round_17 <- read.csv(file = "load/data_17/data_17_output/trans_out_round_17.csv")
 minutes_round_17 <- read.csv(file = "load/data_17/data_17_output/minutes_round_17.csv")
+tot_points_round_17 <- read.csv(file = "load/data_17/data_17_output/tot_points_round_17.csv")
+last_season_p_round_17 <- read.csv(file = "load/data_17/data_17_output/last_season_p_round_17.csv")
+last_season_tot_p_round_17 <- read.csv(file = "load/data_17/data_17_output/last_season_tot_p_round_17.csv")
+y_cards_round_17 <- read.csv(file = "load/data_17/data_17_output/y_cards_round_17.csv")
+goals_con_round_17 <- read.csv(file = "load/data_17/data_17_output/goals_con_round_17.csv")
+saves_round_17 <- read.csv(file = "load/data_17/data_17_output/saves_round_17.csv")
+goals_round_17 <- read.csv(file = "load/data_17/data_17_output/goals_round_17.csv")
+pen_miss_round_17 <- read.csv(file = "load/data_17/data_17_output/pen_miss_round_17.csv")
+pen_save_round_17 <- read.csv(file = "load/data_17/data_17_output/pen_save_round_17.csv")
+clean_sheet_round_17 <- read.csv(file = "load/data_17/data_17_output/clean_sheet_round_17.csv")
+assists_round_17 <- read.csv(file = "load/data_17/data_17_output/assists_round_17.csv")
+own_goals_round_17 <- read.csv(file = "load/data_17/data_17_output/own_goals_round_17.csv")
+dream_team_round_17 <- read.csv(file = "load/data_17/data_17_output/dream_team_round_17.csv")
+r_cards_round_17 <- read.csv(file = "load/data_17/data_17_output/r_cards_round_17.csv")
+BPS_round_17 <- read.csv(file = "load/data_17/data_17_output/BPS_round_17.csv")
 
 #Other sources
 h_a_17_double <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_a_17_player.csv")
 injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
 streak_matrix <- read.csv(file = "load/data_17/data_17_output/streak_matrix.csv")
+elo_team <- read.csv(file = "load/data_17/data_17_output/elo_team_17.csv")
+elo_opponent <- read.csv(file = "load/data_17/data_17_output/elo_opponent_17.csv")
 
 #1-40
 gw_player_num <- read.csv(file = "load/data_17/data_17_output/gw_player_num.csv")
