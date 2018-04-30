@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1524821377593.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4166029918",
+    "id" : "31D5630E",
+    "lastKnownWriteTime" : 1524831168,
+    "last_content_update" : 1524831168748,
+    "path" : "//sambaad.stud.ntnu.no/williaei/Documents/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/16/regressors_MID.R",
+    "project_path" : "forecasting/16/regressors_MID.R",
+    "properties" : {
+        "cursorPosition" : "57,47",
+        "scrollLine" : "26",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
