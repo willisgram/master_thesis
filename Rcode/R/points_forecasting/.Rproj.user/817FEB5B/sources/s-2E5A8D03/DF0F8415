@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525166082192.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4289742907",
+    "id" : "DF0F8415",
+    "lastKnownWriteTime" : 1525167411,
+    "last_content_update" : 1525168457703,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/analyzing/17/master_total_points_17_chips_perfect.R",
+    "project_path" : "analyzing/17/master_total_points_17_chips_perfect.R",
+    "properties" : {
+        "cursorPosition" : "195,0",
+        "scrollLine" : "170",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

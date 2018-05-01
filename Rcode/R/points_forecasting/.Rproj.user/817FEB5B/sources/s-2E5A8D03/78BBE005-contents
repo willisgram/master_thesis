@@ -6,11 +6,11 @@ library(tidyverse)
 
 round_stop  <- 38
 pen_min <- 4
-pen_max <- 20
+pen_max <- 6
 hor_min <- 1
-hor_max <- 10
+hor_max <- 1
 f_hor_min <- 3
-f_hor_max <- 7
+f_hor_max <- 3
 runs <- (pen_max-pen_min+1)*(hor_max-hor_min+1)*(f_hor_max-f_hor_min+1)
 run <- 1
 penalty_horizon_ov <- data.frame(penalty = rep(0,runs),
@@ -83,12 +83,14 @@ for(f_hor in f_hor_min:f_hor_max){
         substitutes_round <- substitutes %>% mutate(index = as.integer(substitutes)) %>% select(index)
         
         #Illegal transfers
-        file_ill_trans <- paste0(path,method,folder,"number_illegal_transfers.csv")
-        ill_trans <- read.csv(file_ill_trans,header = F)
-        colnames(ill_trans)[1] <- "ill_trans"
-        ill_trans_round <- ill_trans %>% mutate(index = as.integer(ill_trans)) %>% select(index)  
-        
-        
+        if(i - f_hor == 1){
+          ill_trans_round <- data.frame(index = 0)
+        } else{
+          file_ill_trans <- paste0(path,method,folder,"number_illegal_transfers.csv")
+          ill_trans <- read.csv(file_ill_trans,header = F)
+          colnames(ill_trans)[1] <- "ill_trans"
+          ill_trans_round <- ill_trans %>% mutate(index = as.integer(ill_trans)) %>% select(index)  
+        }
         
         #Remaining
         file_rem <- paste0(path,method,folder,"remaining_budget.csv")

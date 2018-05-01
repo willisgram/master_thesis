@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525166077718.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A90D3BDE",
+    "lastKnownWriteTime" : 1524839862,
+    "last_content_update" : 1524839862,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/analyzing/17/master_total_points_17_chips.R",
+    "project_path" : "analyzing/17/master_total_points_17_chips.R",
+    "properties" : {
+        "cursorPosition" : "183,0",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
