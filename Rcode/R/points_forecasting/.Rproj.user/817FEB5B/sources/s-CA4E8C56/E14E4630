@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1524818120031.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "78|49|91|0|\n198|49|211|0|\n",
+    "hash" : "0",
+    "id" : "E14E4630",
+    "lastKnownWriteTime" : 1524831111,
+    "last_content_update" : 1524831111503,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/16/regressors_16_full.R",
+    "project_path" : "forecasting/16/regressors_16_full.R",
+    "properties" : {
+        "cursorPosition" : "447,0",
+        "scrollLine" : "350"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

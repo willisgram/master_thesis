@@ -1,0 +1,3 @@
+team <- read.csv("selected.csv",header = F)
+colnames(team)[1] <- "index"
+team_selected <- inner_join(players,team,"index")

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525077261124.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1715761638",
+    "id" : "FDA25559",
+    "lastKnownWriteTime" : 1525103200,
+    "last_content_update" : 1525103200020,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/analyzing/plots/4d_plot.R",
+    "project_path" : "analyzing/plots/4d_plot.R",
+    "properties" : {
+        "cursorPosition" : "1,73",
+        "scrollLine" : "0"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
