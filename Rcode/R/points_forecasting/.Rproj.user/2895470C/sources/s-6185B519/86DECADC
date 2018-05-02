@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525173103134.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1841949052",
+    "id" : "86DECADC",
+    "lastKnownWriteTime" : 1525180249,
+    "last_content_update" : 1525180249469,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/analyzing/16/master_total_points_16_finished_ill_trans.R",
+    "project_path" : "analyzing/16/master_total_points_16_finished_ill_trans.R",
+    "properties" : {
+        "cursorPosition" : "204,95",
+        "scrollLine" : "176"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

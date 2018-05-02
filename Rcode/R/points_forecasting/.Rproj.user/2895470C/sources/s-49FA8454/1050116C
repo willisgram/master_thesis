@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525250414754.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "1050116C",
+    "lastKnownWriteTime" : 7094656452811763571,
+    "last_content_update" : 1525250414754,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "ACC51B5",
+        "caption" : "regressors_16_GLK",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=regressors_16_GLK&cache_key=ACC51B5",
+        "displayedObservations" : 1243,
+        "environment" : "",
+        "object" : "regressors_16_GLK",
+        "preview" : 0,
+        "totalObservations" : 1243,
+        "variables" : 17
+    },
+    "relative_order" : 14,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

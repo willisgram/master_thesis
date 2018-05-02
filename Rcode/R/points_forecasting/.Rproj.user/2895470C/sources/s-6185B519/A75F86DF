@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525179047123.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "A75F86DF",
+    "lastKnownWriteTime" : 1524813988,
+    "last_content_update" : 1524813988,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/load/data_16/data_full_16_reg.R",
+    "project_path" : "load/data_16/data_full_16_reg.R",
+    "properties" : {
+        "cursorPosition" : "43,109",
+        "scrollLine" : "20"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

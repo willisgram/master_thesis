@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525249770236.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "4A44D884",
+    "lastKnownWriteTime" : 7094656452811763571,
+    "last_content_update" : 1525249770236,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "2B7A75BD",
+        "caption" : "predictors_FWD",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=predictors_FWD&cache_key=2B7A75BD",
+        "displayedObservations" : 176,
+        "environment" : "",
+        "object" : "predictors_FWD",
+        "preview" : 0,
+        "totalObservations" : 176,
+        "variables" : 25
+    },
+    "relative_order" : 12,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

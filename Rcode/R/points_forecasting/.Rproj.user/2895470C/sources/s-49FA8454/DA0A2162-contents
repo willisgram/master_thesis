@@ -1,0 +1,154 @@
+#####################
+# Master loop to finish all prediction sheets
+# Fit model on 2016 round 6 to 30 ish (latest games must be used to forecast first 2017 rounds)
+# Forecast entire 2017 season (both by updating and keeping regression model)
+#####################
+
+####################
+# Create regression model
+####################
+#####################
+# Master loop to finish all prediction sheets
+#####################
+library(xlsx)
+# index - gw_1 - gw_2 ...
+
+# Suggestion, only change opponent and team
+# Not using forecast as new previous
+# Also, first, fit model and only update predictors
+
+
+#given input
+k <- 4
+h <- 5
+last_gw <- 35
+# week_for <- 15
+
+# Train in 2016
+
+
+
+for(week_for in 1:last_gw){
+  
+  # Update regressors
+  ##################
+  if(week_for == 1){
+    regressors <- head(regressors_16,625*30)
+    regressors_GLK <- regressors %>% filter(pos == "GLK")
+    regressors_DEF <- regressors %>% filter(pos == "DEF")
+    regressors_MID <- regressors %>% filter(pos == "MID")
+    regressors_FWD <- regressors %>% filter(pos == "FWD")
+    
+    predictors <- tail(regressors_16,625)
+    predictors_GLK <- predictors %>% filter(pos == "GLK")
+    predictors_DEF <- predictors %>% filter(pos == "DEF")
+    predictors_MID <- predictors %>% filter(pos == "MID")
+    predictors_FWD <- predictors %>% filter(pos == "FWD")
+    
+  } else{
+    regressors <- rbind(tail(regressors_16,625*(38-week_for)),head(regressors_17,625*(week_for-1)))
+    regressors_GLK <- regressors %>% filter(pos == "GLK")
+    regressors_DEF <- regressors %>% filter(pos == "DEF")
+    regressors_MID <- regressors %>% filter(pos == "MID")
+    regressors_FWD <- regressors %>% filter(pos == "FWD")
+    
+    predictors <- regressors_17[(625*(week_for-1)+1):(625*week_for),]
+    predictors_GLK <- predictors %>% filter(pos == "GLK")
+    predictors_DEF <- predictors %>% filter(pos == "DEF")
+    predictors_MID <- predictors %>% filter(pos == "MID")
+    predictors_FWD <- predictors %>% filter(pos == "FWD")
+  }
+  
+  #################
+  #Fit Models
+  model_GLK <- lm(data = regressors_GLK,
+                  realized ~ opponent + team + cost + trans_in_prev_1 + trans_out_prev_1 + H_A + minutes
+                  + saves + assists + own_goals)
+  model_DEF <- lm(data = regressors_DEF,
+                  realized ~ opponent + team + cost + trans_in_prev_1 + trans_out_prev_1 + H_A + minutes
+                  + y_cards)
+  model_MID <- lm(data = regressors_MID,
+                  realized ~ opponent + team + cost + trans_in_prev_1 + trans_out_prev_1 + H_A + minutes + y_cards
+                  + goals + pen_miss + clean_sheet + assists)
+  model_FWD <- lm(data = regressors_FWD,
+                  realized ~ opponent + team + cost + trans_in_prev_1 + minutes
+                  + goals + pen_miss + assists)
+  
+  #Predict
+  predictions <- data.frame()
+  
+  
+  for (j in 1:h) {
+    if( j == 1){
+      predictions_GLK <- predict(object = model_GLK,newdata = predictors_GLK)
+      predictions <- rbind(predictions,predictions_GLK)
+      predictions_DEF <- predict(object = model_DEF,newdata = predictors_DEF)
+      predictions <- rbind(predictions,predictions_DEF)
+      predictions_MID <- predict(object = model_MID,newdata = predictors_MID)
+      predictions <- rbind(predictions,predictions_MID)
+      predictions_FWD <- predict(object = model_FWD,newdata = predictors_FWD)
+      predictions <- rbind(predictions,predictions_FWD)
+      
+      ##Store
+      name <- paste0("gw_",as.character(week_for))
+      predictions_table <- data.frame(index = 1:625)
+      predictions_table <- cbind(predictions_table,predictions)
+      colnames(predictions_table)[j+1] <- name
+    }
+    else{
+      
+      predictions_u <- data.frame()
+      
+      opponent_u <- opponent_round_17[week_for+j]
+      team_u     <- team_round_17[week_for+j]
+      H_A_u      <- h_a_17[week_for+j]
+      
+      predictors[, "opponent"] <- opponent_u
+      predictors[, "team"] <- team_u
+      predictors[, "H_A"] <- H_A_u
+      
+      predictors_GLK <- predictors %>% filter(pos == "GLK")
+      predictors_DEF <- predictors %>% filter(pos == "DEF")
+      predictors_MID <- predictors %>% filter(pos == "MID")
+      predictors_FWD <- predictors %>% filter(pos == "FWD")
+      
+      predictions_GLK <- predict(object = model_GLK,newdata = predictors_GLK)
+      predictions_u <- rbind(predictions_u,predictions_GLK)
+      predictions_DEF <- predict(object = model_DEF,newdata = predictors_DEF)
+      predictions_u <- rbind(predictions_u,predictions_DEF)
+      predictions_MID <- predict(object = model_MID,newdata = predictors_MID)
+      predictions_u <- rbind(predictions_u,predictions_MID)
+      predictions_FWD <- predict(object = model_FWD,newdata = predictors_FWD)
+      predictions_u <- rbind(predictions_u,predictions_FWD)
+      
+      ##Store
+      name <- paste0("gw_",as.character(week_for+j-1))
+      predictions_table <- cbind(predictions_table,predictions_u)
+      colnames(predictions_table)[j+1] <- name
+    }
+  }
+  
+  
+  # Stucture back to standard format and write xlsx
+  ###############
+  
+  # Create NAs for predictions
+  #names(predictions_table)[names(predictions_table) == "index_int"] <- "index"
+  #index_temp <- data.frame(index = 1:625)
+  #predictions_table <- full_join(predictions_table, index_temp, by = "index") %>% arrange(index)
+  predictions_table[is.na(predictions_table)] <- -10000
+  
+  # Assign name
+  #Forecasts
+  name_for <- paste0("forecast_point_GW", as.character(week_for),".xlsx")
+  path_for <- '../../../input/dynamic_data/forecasting_method/regression/'
+  file_for <- paste0(path_for, name_for)
+  
+  #assign(x = name_for,value = predictions_table)
+  
+  # Write xlsx file
+  rownames(predictions_table) <- NULL
+  write.xlsx(predictions_table, file_for,row.names = F)
+  #################
+}
+

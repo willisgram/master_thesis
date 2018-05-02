@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525169589748.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3939493853",
+    "id" : "6923DE75",
+    "lastKnownWriteTime" : 1524763045,
+    "last_content_update" : 1524763045,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/other_scripts/correlation_17/correlation_opponents.R",
+    "project_path" : "other_scripts/correlation_17/correlation_opponents.R",
+    "properties" : {
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

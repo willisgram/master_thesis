@@ -168,13 +168,34 @@ for (i in round_start:round_stop) {
 }
 
 total_points_round$points <- as.numeric(total_points_round$points)
+total_points_round$ill_trans <- as.numeric(total_points_round$ill_trans)
 mean(total_points_round$points)
 
-run <- 1
-penalty_horizon_ov$penalty[run] <- pen
-penalty_horizon_ov$horizon[run] <- hor
-penalty_horizon_ov$objective_value[run] <- sum(total_points_round$points)
-penalty_horizon_ov$mean[run] <- sum(total_points_round$points)
+#Write xlsx
+library(xlsx)
+write.csv(x = total_points_round,file = "load/data_17/data_17_output/total_points_perfect_17.csv",row.names = F)
+write.csv(x = final_team_each_round,file = "load/data_17/data_17_output/final_team_each_round_perfect_17.csv",row.names = F)
+
+#Write tot points
+name <- paste0("total_points_perfect_17.xlsx")
+path <- '../../../finished_data/season_17/perfect_information/'
+file <- paste0(path, name)
+
+# Write xlsx file
+rownames(total_points_round) <- NULL
+write.xlsx(total_points_round, file,row.names = F)
+
+#Write final team
+name <- paste0("final_team_perfect_17.xlsx")
+path <- '../../../finished_data/season_17/perfect_information/'
+file <- paste0(path, name)
+
+# Write xlsx file
+rownames(final_team_each_round) <- NULL
+write.xlsx(final_team_each_round, file,row.names = F)
+
+###########
+
 
 
 

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525176254553.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3121251350",
+    "id" : "2BAD5114",
+    "lastKnownWriteTime" : 1525250732,
+    "last_content_update" : 1525250732365,
+    "path" : "//sambaad.stud.ntnu.no/williaei/Documents/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/17/Regression/rolling_forecasts.R",
+    "project_path" : "forecasting/17/Regression/rolling_forecasts.R",
+    "properties" : {
+        "cursorPosition" : "44,11",
+        "scrollLine" : "38",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525246491048.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "17|49|30|0|\n33|49|46|0|\n51|49|64|0|\n69|49|82|0|\n93|49|106|0|\n",
+    "hash" : "1830106085",
+    "id" : "12886F5C",
+    "lastKnownWriteTime" : 1525247177,
+    "last_content_update" : 1525247177473,
+    "path" : "//sambaad.stud.ntnu.no/williaei/Documents/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/17/Regression/regressors_16_17.R",
+    "project_path" : "forecasting/17/Regression/regressors_16_17.R",
+    "properties" : {
+        "cursorPosition" : "117,0",
+        "scrollLine" : "33",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 10,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
