@@ -4,7 +4,7 @@
 library(tourr)
 library(tidyverse)
 
-penalty_horizon_ov <- read.csv(file = "load/data_16/data_16_output/penalty_horizon_ov_3_7.csv")
+penalty_horizon_ov_3_7 <- read.csv(file = "load/data_16/data_16_output/penalty_horizon_ov_3_7.csv")
 
 penalty_horizon_ov_short <- penalty_horizon_ov %>% group_by(penalty) %>% filter(mean == max(mean)) %>% arrange(penalty)
 penalty_horizon_ov_short$horizon <- as.factor(penalty_horizon_ov_short$horizon)

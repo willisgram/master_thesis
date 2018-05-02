@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525270955764.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "EBE163BA",
+    "lastKnownWriteTime" : 0,
+    "last_content_update" : -2147483648,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "1FC44C9D",
+        "caption" : "predictions_table_average",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=predictions_table_average&cache_key=1FC44C9D",
+        "displayedObservations" : 625,
+        "environment" : "",
+        "object" : "predictions_table_average",
+        "preview" : 0,
+        "totalObservations" : 625,
+        "variables" : 11
+    },
+    "relative_order" : 8,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

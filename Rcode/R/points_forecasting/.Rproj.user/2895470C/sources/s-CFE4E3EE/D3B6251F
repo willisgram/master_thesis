@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525271644507.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3234835237",
+    "id" : "D3B6251F",
+    "lastKnownWriteTime" : 1525265992,
+    "last_content_update" : 1525265992,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/17/Regression/regressors_master.R",
+    "project_path" : "forecasting/17/Regression/regressors_master.R",
+    "properties" : {
+        "cursorPosition" : "112,0",
+        "scrollLine" : "99",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 6,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

@@ -1,0 +1,29 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525262320752.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "C6BFFDFB",
+    "lastKnownWriteTime" : 3080297,
+    "last_content_update" : -2147483648,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "BFC00BDA",
+        "caption" : "penalty_horizon_ov_3_7",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=penalty_horizon_ov_3_7&cache_key=BFC00BDA",
+        "displayedObservations" : 850,
+        "environment" : "",
+        "object" : "penalty_horizon_ov_3_7",
+        "preview" : 0,
+        "totalObservations" : 850,
+        "variables" : 5
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525266818261.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "21|22|31|0|\n34|22|44|0|\n102|18|130|0|\n133|18|161|0|\n",
+    "hash" : "1332534735",
+    "id" : "FEBC8410",
+    "lastKnownWriteTime" : 1525270924,
+    "last_content_update" : -2147483648,
+    "path" : "~/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/16/average_improved_16.R",
+    "project_path" : "forecasting/16/average_improved_16.R",
+    "properties" : {
+        "cursorPosition" : "13,0",
+        "scrollLine" : "8"
+    },
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

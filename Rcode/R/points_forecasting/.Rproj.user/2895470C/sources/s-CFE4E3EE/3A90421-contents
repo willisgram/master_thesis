@@ -5,54 +5,20 @@ library(tidyverse)
 
 
 last_gw <- 35
-a <- 7
+a <- 6
+
 
 #########
 # Average w/ELO
 #########
-
-path <- '../../../Data/BK/ELO17-18_score.csv'
-elo <- read.csv2(path)
-elo_team <- data.frame(matrix(nrow = 625,ncol = last_gw,10))
-team_round_17_short <- team_round_17[,names(team_round_17)!= "index"]
-elo_opponent <- data.frame(matrix(nrow = 625,ncol = last_gw,10))
-opponent_round_17_short <- opponent_round_17_short[,names(opponent_round_17_short) != "index"]
-
-# Fill Elo rating of team
-for (j in 1:last_gw) {
-  for (i in 1:625) {
-    for (k in 1:20) {
-      if(team_round_17_short[i,j] == elo[k,1] & !is.na(team_round_17_short[i,j])){
-        index <- k
-        elo_team[i,j] <- elo[index,j+1]
-        break
-      }
-    }
-  }
-}
-
-# Fill Elo rating of opponents
-for (j in 1:last_gw) {
-  for (i in 1:625) {
-    for (k in 1:20) {
-      if(opponent_round_17_short[i,j] == elo[k,1] & !is.na(opponent_round_17_short[i,j])){
-        index <- k
-        elo_opponent[i,j] <- elo[index,j+1]
-        break
-      }
-    }
-  }
-}
-
-# Create Elo adjustment factor
-elo_opponent <- data.matrix(elo_opponent)
-elo_team <- data.matrix(elo_team)
+elo_opponent <- data.matrix(elo_opponent_17)
+elo_team <- data.matrix(elo_team_17)
 elo_player_history <- elo_opponent/elo_team
 
+
 # Adjust historic performance with Elo rating of opponent
-points_round_17_elo <- points_round_17[,2:(last_gw+1)]*elo_player_history
-index <- 1:625
-points_round_17_elo <- cbind(index,points_round_17_elo)
+points_round_17_elo <- points_round_17*elo_player_history
+
 
 # Calculate average Elo adjusted performance
 points_average_a_17 <- data.frame(index = 1:625)
@@ -103,7 +69,6 @@ score <- points_average_a_17[,2:(last_gw+1)]*h_a_17_num[,1:(last_gw)]
 # Player Point Streak
 ########
 streak_matrix <- read.csv(file = "load/data_17/data_17_output/streak_matrix.csv")
-
 score <- score*streak_matrix[,1:last_gw]
 
 #########
@@ -114,38 +79,65 @@ gw_player_num <- data.matrix(gw_player_num)
 score <- score*gw_player_num[,1:last_gw]
 ############
 
-# injuries
-#############
-injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
-injuries_17 <- data.matrix(injuries_17)
-injuries_17 <- injuries_17[,2:(last_gw+1)]
-score <- score*injuries_17
-############
-
-#For accuracy tests
-forecasts_improved <- score
-
-#################
-# Write files
-##################
-
-write.csv(x = forecasts_improved,file = paste0("load/data_17/data_17_output/forecasts_improved_2017_hor_",a,".csv"),row.names = F)
-
 library(xlsx) #does not work on mac per now
 path <- paste0('../../../input/dynamic_data/season_17/forecasting_method/average/improved_hor_',a,'/')
-dir.create(path = path )
+#dir.create(path = path )
 
 h<-11
-elo_player_future <- elo_team/elo_opponent
-# Add line adjusting for double gameweek elo (?)
+team_round_17_short <- team_round_17[,names(team_round_17)!= "index"]
 
 for(week_for in 1:last_gw){
   
+  if(last_gw-week_for < h){
+    n <- last_gw-week_for+1
+  } else{
+    n <- h
+  }
+  
+  elo_team_temp <- data.frame(matrix(nrow = 625,ncol = h,1))
+  
+  # Fill Elo rating of team
+  for (j in week_for:(week_for+n-1)) {
+    for (i in 1:625) {
+      for (k in 1:20) {
+        if(team_round_17_short[i,j] == elo_17[k,1] & !is.na(team_round_17_short[i,j])){
+          index <- k
+          elo_team_temp[i,(j-week_for+1)] <- elo_17[index,week_for+1]
+          break
+        }
+      }
+    }
+  }
+  
+  elo_opponent_temp <- data.frame(matrix(nrow = 625,ncol = h,1))
+  
+  # Fill Elo rating of opponent
+  for (j in week_for:(week_for+n-1)) {
+    for (i in 1:625) {
+      for (k in 1:20) {
+        if(opponent_round_17_short[i,j] == elo_17[k,1] & !is.na(opponent_round_17_short[i,j])){
+          index <- k
+          elo_opponent_temp[i,(j-week_for+1)] <- elo_17[index,week_for+1]
+          break
+        }
+      }
+    }
+  }
+  
+  elo_team_temp <- data.matrix(elo_team_temp)
+  elo_opponent_temp <- data.matrix(elo_opponent_temp)
+  elo_player_future_temp <- elo_team_temp/elo_opponent_temp
+  
+  injuries_temp <- injuries_17[,week_for+1]
+  injuries_17[,2:(h)] <- injuries_17[,1]
+  
   predictions_table_average <- score %>% select(week_for)
   predictions_table_average[,2:(h)] <- predictions_table_average[,1]
-  predictions_table_average <- predictions_table_average*elo_player_future[,(week_for):(h)]
-  predictions_table_average <- cbind(points_average_a_17[,1],predictions_table_average)
-  colnames(predictions_table_average)[1] <- "index"
+  predictions_table_average <- predictions_table_average*elo_player_future_temp
+  predictions_table_average <- predictions_table_average*injuries_temp
+  
+  index <- 1:625
+  predictions_table_average <- cbind(index,predictions_table_average)
   colnames(predictions_table_average)[2:(h+1)] <- paste0("round_",(week_for):(week_for+h-1))
   predictions_table_average[is.na(predictions_table_average)] <- -10000
   

@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1525266313775.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "25|20|47|0|\n99|38|109|2|\n114|38|124|2|\n",
+    "hash" : "3506658836",
+    "id" : "3A90421",
+    "lastKnownWriteTime" : 1525272604,
+    "last_content_update" : -2147483648,
+    "path" : "//sambaad.stud.ntnu.no/williaei/Documents/GitHub/master_thesis/Rcode/R/points_forecasting/forecasting/17/Average/average_improved_validated.R",
+    "project_path" : "forecasting/17/Average/average_improved_validated.R",
+    "properties" : {
+        "cursorPosition" : "136,70",
+        "scrollLine" : "94",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

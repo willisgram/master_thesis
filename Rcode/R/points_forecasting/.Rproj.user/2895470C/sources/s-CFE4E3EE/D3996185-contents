@@ -50,6 +50,12 @@ dream_team_round_16 <- read.csv(file = "load/data_16/data_16_output/dream_team_r
 r_cards_round_16 <- read.csv(file = "load/data_16/data_16_output/r_cards_round_16.csv")
 BPS_round_16 <- read.csv(file = "load/data_16/data_16_output/BPS_round_16.csv")
 
+elo_team_16 <- read.csv(file = "load/data_16/data_16_output/elo_team_16.csv")
+elo_opponent_16 <- read.csv(file = "load/data_16/data_16_output/elo_opponent_16.csv")
+streak_matrix_16 <- read.csv(file = "load/data_16/data_16_output/streak_matrix_16.csv")
+path <- '../../../Data/BK/ELO16-17_score.csv'
+elo_16 <- read.csv2(path)
+
 ###################
 # Regressors 2017
 ###################
@@ -85,11 +91,14 @@ BPS_round_17 <- read.csv(file = "load/data_17/data_17_output/BPS_round_17.csv")
 h_a_17_double <- read.csv(file = "load/data_17/data_17_output/h_b_17.csv")
 h_a_17 <- read.csv(file = "load/data_17/data_17_output/h_a_17_player.csv")
 injuries_17 <- read.csv(file = "load/data_17/data_17_output/injuries_17.csv")
-streak_matrix <- read.csv(file = "load/data_17/data_17_output/streak_matrix.csv")
-elo_team <- read.csv(file = "load/data_17/data_17_output/elo_team_17.csv")
-elo_opponent <- read.csv(file = "load/data_17/data_17_output/elo_opponent_17.csv")
+streak_matrix_17 <- read.csv(file = "load/data_17/data_17_output/streak_matrix.csv")
+elo_team_17 <- read.csv(file = "load/data_17/data_17_output/elo_team_17.csv")
+elo_opponent_17 <- read.csv(file = "load/data_17/data_17_output/elo_opponent_17.csv")
+path <- '../../../Data/BK/ELO17-18_score.csv'
+elo_17 <- read.csv2(path)
 
-#1-40
+
+#1-38
 gw_player_num <- read.csv(file = "load/data_17/data_17_output/gw_player_num.csv")
 
 
